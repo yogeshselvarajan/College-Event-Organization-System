@@ -4,9 +4,9 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class FormUpdatingForm
+public class StudentDetailsUpdationForm
 {
-    public FormUpdatingForm()
+    public StudentDetailsUpdationForm()
     {
         JFrame f =new JFrame("UPDATING FORM");
         JLabel title = new JLabel("UPDATE YOUR DETAILS",JLabel.CENTER);
@@ -183,7 +183,7 @@ public class FormUpdatingForm
     }
     public  static void  main(String[] args)
     {
-        new FormUpdatingForm();
+        new StudentDetailsUpdationForm();
     }
 
  }
