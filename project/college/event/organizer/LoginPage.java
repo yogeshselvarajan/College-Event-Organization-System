@@ -6,7 +6,8 @@ import javax.swing.*;
 import java.awt.event.*;
 
 
-public class LoginPage extends JFrame implements ActionListener {
+public class LoginPage extends JFrame implements ActionListener
+{
     Container container = getContentPane();
     JLabel userlabel, passwordlabel;
     JTextField usertext, passwordtext;
