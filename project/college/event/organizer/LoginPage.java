@@ -1,81 +1,103 @@
 package project.college.event.organizer;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.util.HashMap;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 
-class LoginDemo extends JFrame implements ActionListener {
+public class LoginPage implements ActionListener {
 
-    JPanel panel;
-    JLabel user_label, password_label, message;
-    JTextField userName_text;
-    JPasswordField password_text;
-    JButton submit, cancel;
+    HashMap<String,String> logininfo = new HashMap<>();
+    protected HashMap<String,String> getLoginInfo()
+    {
+        logininfo.put("Krish","123456");
+        logininfo.put("Sree","234567");
+        logininfo.put("TSK","34567");
 
-    LoginDemo() {
-
-        // User Label
-        user_label = new JLabel();
-        user_label.setText("User Name :");
-        userName_text = new JTextField();
-
-        // Password
-
-        password_label = new JLabel();
-        password_label.setText("Password :");
-        password_text = new JPasswordField();
-
-        // Submit
-
-        submit = new JButton("SUBMIT");
-
-        panel = new JPanel(new GridLayout(3, 1));
-
-        panel.add(user_label);
-        panel.add(userName_text);
-        panel.add(password_label);
-        panel.add(password_text);
-
-        message = new JLabel();
-        panel.add(message);
-        panel.add(submit);
-
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // Adding the listeners to components..
-        submit.addActionListener(this);
-        add(panel, BorderLayout.CENTER);
-        setTitle("Please Login Here !");
-        setSize(300, 100);
-        setVisible(true);
-
+        return logininfo;
     }
 
-    public static void main(String[] args) {
-        new LoginDemo();
+    JFrame frame = new JFrame();
+    JButton login = new JButton("Login");
+    JButton reset = new JButton("Reset");
+    JTextField id = new JTextField();
+    JPasswordField pass = new JPasswordField();
+    JLabel username = new JLabel("Username");
+    JLabel passlabel = new JLabel("Password");
+    JLabel message = new JLabel();
+
+
+
+
+
+    LoginPage()
+    {
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(500,500);
+        frame.setBackground(Color.CYAN);
+        frame.setVisible(true);
+        frame.setResizable(false);
+        passlabel.setBounds(75,160,75,25);
+        username.setBounds(75,110,75,25);
+        message.setBounds(300,200,100,100);
+
+        message.setFont(new Font(null, Font.ITALIC,20));
+        id.setBounds(150,110,200,25);
+        pass.setBounds(150,160,200,25);
+        login.setBounds(150,210,100,25);
+        login.addActionListener(this);
+        reset.setBounds(250,210,100,25);
+        reset.addActionListener(this);
+        login.setFocusable(false);
+        reset.setFocusable(false);
+        frame.add(id);
+        frame.add(pass);
+        frame.add(login);
+        frame.add(reset);
+        frame.add(username);
+        frame.add(passlabel);
+        frame.add(message);
+
+
     }
 
     @Override
-    public void actionPerformed(ActionEvent ae) {
-        String userName = userName_text.getText();
-        String password = password_text.getText();
-        if (userName.trim().equals("admin") && password.trim().equals("admin")) {
-            message.setText(" Hello " + userName
-                    + "");
-        } else {
-            message.setText(" Invalid user.. ");
+    public void actionPerformed(ActionEvent e)
+    {
+        if(e.getSource() == reset)
+        {
+            id.setText("");
+            pass.setText("");
         }
+        if(e.getSource() == login)
+        {
+             String userid = id.getText();
+             String p = String.valueOf(pass.getPassword());
 
+             if(getLoginInfo().containsKey(userid)) {
+                 if (getLoginInfo().get(userid).equals(p)) {
+                     message.setForeground(Color.GREEN);
+                     message.setText("Login Successful!");
+
+                 } else {
+                     message.setForeground(Color.RED);
+                     message.setText("Incorrect password,Please try again!");
+                 }
+             }
+             else{
+                 message.setForeground(Color.RED);
+                 message.setText("Id does not exist!");
+             }
+
+
+        }
     }
 
+
+    public static void main(String [] args)
+    {
+        LoginPage l = new LoginPage();
+    }
 }
