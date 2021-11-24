@@ -7,7 +7,7 @@ import javax.swing.*;
 {
     public GetUserNameForReset()
     {
-        JFrame f =new JFrame("FORGET PASSWORD ");
+        JFrame f =new JFrame("Enter Your Username ");
         JLabel title = new JLabel("FORGET PASSWORD",JLabel.CENTER);
         title.setBounds(500,10,400,110);
         title.setFont(new Font("Comic Sans MS", Font.BOLD,30));
@@ -17,8 +17,8 @@ import javax.swing.*;
 
         JLabel username;
 
-        username = new JLabel(" Username :");
-        username.setBounds(10,160,130,80);
+        username = new JLabel("Username :");
+        username.setBounds(600,133,130,30);
         username.setFont(new Font("Calibri", Font.ITALIC, 24));
 
         f.add(username);
@@ -27,14 +27,14 @@ import javax.swing.*;
         JTextField username1;
 
         username1 = new JTextField();
-        username.setBounds(600,100,170,30);
+        username1.setBounds(750,131,200,30);
 
         f.add(username1);
 
         JButton submit ;
 
         submit = new JButton("Submit");
-        submit.setBounds(600,200,80,50);
+        submit.setBounds(625,200,80,50);
 
         f.add(submit);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
