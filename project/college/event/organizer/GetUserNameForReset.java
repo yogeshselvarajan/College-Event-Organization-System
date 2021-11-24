@@ -10,7 +10,7 @@ import javax.swing.*;
         JFrame f =new JFrame("FORGET PASSWORD ");
         JLabel title = new JLabel("FORGET PASSWORD",JLabel.CENTER);
         title.setBounds(500,10,400,110);
-        title.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
+        title.setFont(new Font("Comic Sans MS", Font.BOLD,30));
         f.add(title);
         f.setBackground(Color.cyan);
         f.setForeground(Color.black);
