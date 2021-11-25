@@ -79,6 +79,25 @@ public class EventRegistration
         meeting_type.setFont(new Font("Calibri", Font.ITALIC, 22));
         f.add(meeting_type);
 
+        duration = new JLabel("Duration");
+        duration.setBounds(250,250,200,30);
+        duration.setFont(new Font("Calibri", Font.ITALIC, 22));
+        f.add(duration);
+
+        JTextField duration1;
+        duration1 = new JTextField();
+        duration1.setBounds(600,250,100,30);
+        f.add(duration1);
+
+        Choice dur = new Choice();
+        dur.setBounds(725,250,70,30);
+        dur.add("MINS"); dur.add("HOURS");
+        f.add(dur);
+
+        start_date = new JLabel("Start Date");
+        start_date.setBounds(250,300,200,30);
+        start_date.setFont(new Font("Calibri", Font.ITALIC, 22));
+        f.add(start_date);
 
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setSize(1600,800);
