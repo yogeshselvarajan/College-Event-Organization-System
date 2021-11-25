@@ -15,7 +15,6 @@ public class UserAuthenticationCheck
         f.setBackground(Color.cyan);
         f.setForeground(Color.black);
 
-
         JLabel choice;
         choice = new JLabel("Security Question : ");
         choice.setBounds(400, 133, 300, 30);
