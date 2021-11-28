@@ -6,17 +6,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class ConnectDataBase {
-    static final String DB_URL = "jdbc:mysql://localhost:3306/";
-    static final String USER = "root";
-    static final String PASS = "localhost";
-
-    public static void main(String[] args) {
-        System.out.println("Connecting to a selected database...");
-        // Open a connection
-        try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);) {
-            System.out.println("Connected database successfully...");
-        } catch (SQLException e) {
-            e.printStackTrace();
+    public static Connection connectdb() throws SQLException
+    {
+        Connection con = null;
+        try
+        {
+            con =DriverManager.getConnection("jdbc:mysql://localhost:3306/","root","localhost");
+            return con;
+        }catch(Exception e)
+        {
+            System.out.println(e.getMessage());
         }
+        return null;
     }
 }

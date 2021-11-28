@@ -2,11 +2,10 @@ package project.college.event.organizer;
 
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.*;
 
-public class EventRegistration
+public class MeetingRegistration
 {
-    public EventRegistration()
+    public MeetingRegistration()
     {
         JFrame f =new JFrame("SCHEDULE A MEETING FORM");
         JLabel title = new JLabel("SCHEDULE A MEETING",JLabel.CENTER);
@@ -99,6 +98,34 @@ public class EventRegistration
         start_date.setFont(new Font("Calibri", Font.ITALIC, 22));
         f.add(start_date);
 
+        Choice start_Month = new Choice();
+        start_Month.setBounds(600,300,90,30);
+        start_Month.add("January");
+        start_Month.add("February");start_Month.add("March");start_Month.add("April");start_Month.add("May");
+        start_Month.add("June");start_Month.add("July");start_Month.add("August");start_Month.add("September");
+        start_Month.add("October");start_Month.add("November");start_Month.add("December");
+        f.add(start_Month);
+
+        Choice start_Date = new Choice();
+        start_Date.setBounds(700,300,45,30);
+        start_Date.add("01"); start_Date.add("02"); start_Date.add("03"); start_Date.add("04"); start_Date.add("05");
+        start_Date.add("06"); start_Date.add("07"); start_Date.add("08"); start_Date.add("09"); start_Date.add("10");
+        start_Date.add("11"); start_Date.add("12"); start_Date.add("13"); start_Date.add("14"); start_Date.add("15");
+        start_Date.add("16");start_Date.add("17");start_Date.add("18");start_Date.add("19");start_Date.add("20");
+        start_Date.add("21");start_Date.add("22");start_Date.add("23");start_Date.add("24");start_Date.add("25");
+        start_Date.add("26");start_Date.add("27");start_Date.add("28");start_Date.add("29");start_Date.add("30");
+        start_Date.add("31");
+        f.add(start_Date);
+
+        Choice start_Year = new Choice();
+        start_Year.setBounds(750,300,100,30);
+        start_Year.add("2021");start_Year.add("2022");start_Year.add("2023");start_Year.add("2024");
+        start_Year.add("2025");
+        f.add(start_Year);
+
+        meeting_options = new JLabel("Meeting Options ");
+       // meeting_options.setBounds(250,);
+
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setSize(1600,800);
         f.setLayout(null);
@@ -106,7 +133,7 @@ public class EventRegistration
     }
     public  static void  main(String[] args)
     {
-        new EventRegistration();
+        new MeetingRegistration();
     }
 
 }
