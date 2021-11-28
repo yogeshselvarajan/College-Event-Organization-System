@@ -2,14 +2,14 @@ package project.college.event.organizer;
 
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.*;
+import java.sql.*;
 
-public class StudentDetailsUpdationForm
+public class NewUserRegister
 {
-    public StudentDetailsUpdationForm()
+    public NewUserRegister()
     {
-        JFrame f =new JFrame("UPDATING FORM");
-        JLabel title = new JLabel("UPDATE YOUR DETAILS",JLabel.CENTER);
+        JFrame f =new JFrame("Registration FORM");
+        JLabel title = new JLabel("New User Register",JLabel.CENTER);
         title.setBounds(500,10,400,110);
         title.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
         f.add(title);
@@ -17,7 +17,7 @@ public class StudentDetailsUpdationForm
         f.setForeground(Color.black);
 
 
-        JLabel name,mobile,email,address,password,username,college_id,course,_class,section;
+        JLabel name,mobile,email,address,question_2 ,question_1 ,college_id,course,_class,section;
 
         name = new JLabel("Name :");
         name.setBounds(400,150,80,80);
@@ -35,13 +35,41 @@ public class StudentDetailsUpdationForm
         address.setBounds(400,300,120,80);
         address.setFont(new Font("Calibri", Font.ITALIC, 24));
 
-        username = new JLabel("Username :");
-        username.setBounds(400,420,120,80);
-        username.setFont(new Font("Calibri", Font.ITALIC, 24));
+        question_1 = new JLabel("Security Question - 1  : ");
+        question_1 .setBounds(400,420,200,80);
+        question_1 .setFont(new Font("Calibri", Font.ITALIC, 20));
+        String[] question_set_1 =
+                {
+                   "Please Select",
+                   "What is the name of your first pet ?",
+                    "What was the first thing you learned to cook ?",
+                    "What was the first film you saw in the theatre ?",
+                    "Where did you go the first time when you flew in a plane ?",
+                    "What is the last name of your favourite elementary school teacher ?"
+                };
+        JComboBox qno1 = new JComboBox (question_set_1);
+        qno1.setBounds(600,440,400,30);
+        f.add(qno1);
+        JTextField answer1 = new JTextField();
+        answer1.setBounds(1040,440,300,30);
+        f.add(answer1);
 
-        password = new JLabel("Password :");
-        password.setBounds(400,470,120,80);
-        password.setFont(new Font("Calibri", Font.ITALIC, 24));
+        question_2 = new JLabel("Security Question - 2 : ");
+        question_2.setBounds(400,470,200,80);
+        question_2.setFont(new Font("Calibri", Font.ITALIC, 20));
+        String[] question_set_2 = {"Please Select",
+                                   "What is your favourite movie ?",
+                                   "What was your child-hood nickname ?",
+                                   "What city or town was your first job in ?",
+                                   "What is the name of the first school you attended ?",
+                                   "What is the name of your favourite childhood friend ?"
+                                  };
+        JComboBox qno2 = new JComboBox(question_set_2);
+        qno2.setBounds(600,490,400,30);
+        f.add(qno2);
+        JTextField answer2 = new JTextField();
+        answer2.setBounds(1040,490,300,30);
+        f.add(answer2);
 
         college_id = new JLabel("College ID :");
         college_id.setBounds(400,520,120,80);
@@ -62,7 +90,7 @@ public class StudentDetailsUpdationForm
 
         /** ADDING COMPONENTS INTO THE FRAME CREATED */
         f.add(name);f.add(mobile);f.add(email);f.add(address);
-        f.add(username);f.add(password);f.add(college_id);f.add(course);
+        f.add(question_1);f.add(question_2);f.add(college_id);f.add(course);
         f.add(_class);f.add(section);
         /************** END OF THE LABEL PART **********************/
 
@@ -81,12 +109,6 @@ public class StudentDetailsUpdationForm
         TextArea address1 = new TextArea("",180,90,TextArea.SCROLLBARS_BOTH);
         address1.setBounds(600,327,400,90);
 
-        username1 = new JTextField();
-        username1.setBounds(600,440,180,30);
-
-        password1 = new JTextField();
-        password1.setBounds(600,490,180,30);
-
         college_id1 = new JTextField();
         college_id1.setBounds(600,540,180,30);
 
@@ -96,9 +118,6 @@ public class StudentDetailsUpdationForm
         birthday_Month.setBounds(660,595,120,30);
         Choice birthday_Year = new Choice();
         birthday_Year.setBounds(800,595,100,30);
-
-        Choice education = new Choice();
-        education.setBounds(600,647,300,30);
 
 
         birthday_Date.add("DD");
@@ -127,16 +146,21 @@ public class StudentDetailsUpdationForm
         birthday_Year.add("2005");birthday_Year.add("2006");birthday_Year.add("2007");birthday_Year.add("2008");
         f.add(birthday_Year);
 
-        education.add("Select your Course");
-        education.add("B.E. Computer Science and Engineering");
-        education.add("B.E. Artificial Intelligence and Data Science");
-        education.add("B.E. BioTechnology");
-        education.add("B.E. BioMedical Engineering");
-        education.add("B.E.Electronics and Communication Engineering");
-        education.add("B.E. Information Technology");
-        education.add("B.E. Mechanical Engineering");
-        education.add("B.E. Civil Engineering");
-        f.add(education);
+        String[] question_course_stream =
+                {
+                        "Select your Course",
+                        "B.E. Computer Science and Engineering",
+                        "B.E. Artificial Intelligence and Data Science",
+                        "B.E. BioTechnology",
+                        "B.E. BioMedical Engineering",
+                        "B.E.Electronics and Communication Engineering",
+                        "B.E. Information Technology",
+                        "B.E. Mechanical Engineering",
+                        "B.E. Civil Engineering",
+                };
+        JComboBox department = new JComboBox(question_course_stream);
+        department.setBounds(600,647,300,30);
+        f.add(department);
 
         CheckboxGroup cbg=new CheckboxGroup();
         Checkbox ck1=new Checkbox("A",false,cbg);
@@ -149,16 +173,45 @@ public class StudentDetailsUpdationForm
         ck4.setBounds(810,690,45,30);
 
         f.add(name1);f.add(mobile1);f.add(email1);
-        f.add(address1);f.add(username1);f.add(password1);
+        f.add(address1);f.add(qno1);
         f.add(college_id1);f.add(ck1);f.add(ck2);f.add(ck3);f.add(ck4);
 
         JButton submit = new JButton("Submit");
         submit.setBounds(520,117,100,30);
         submit.addActionListener(e -> {
-            int input = JOptionPane.showConfirmDialog(null,
-                    "Do you want to update your details ?", "Select an Option...",JOptionPane.YES_NO_CANCEL_OPTION);
-            // 0=yes, 1=no, 2=cancel
-            System.out.println(input);
+            String Name = name1.getText();
+            String Mobile = mobile1.getText();
+            String emailID = email.getText().toString();
+            String Address = address1.getText();
+            String Answer1 = answer1.getText();
+            String Answer2 = answer2.getText();
+            String CollegeID = college_id1.getText();
+            int len = Mobile.length();
+            String msg = "" + Name;
+            msg += " \n";
+
+            //Check the length of the Mobile Number
+            if (len != 10) {
+                JOptionPane.showMessageDialog(submit, "Enter a valid mobile number");
+            }
+                    try {
+                        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdb", "root", "localhost");
+
+                        String query = "INSERT INTO students values('" + Name + "','" + Mobile + "','" + emailID + "','" +
+                                Address + "','" + Answer1 + "','" + Answer2 + "','" + CollegeID + "')";
+
+                        Statement sta = connection.createStatement();
+                        int x = sta.executeUpdate(query);
+                        if (x == 0) {
+                            JOptionPane.showMessageDialog(submit, "This is already exist");
+                        } else {
+                            JOptionPane.showMessageDialog(submit,
+                                    "Welcome, " + msg + "Your account is successfully created");
+                        }
+                        connection.close();
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
         });
         f.add(submit);
 
@@ -166,13 +219,13 @@ public class StudentDetailsUpdationForm
         reset.setBounds(720,117,100,30);
         reset.addActionListener(e -> {
             name1.setText("");
-           /// name1,mobile1,email1,password1,username1,college_id1
             mobile1.setText("");
             email1.setText("");
-            password1.setText("");
-            username1.setText("");
-            college_id1.setText("");
             address1.setText("");
+            qno1.setSelectedItem("Please Select");
+            qno2.setSelectedItem("Please Select");
+            college_id1.setText("");
+            department.setSelectedItem("Select your Course");
         });
         f.add(reset);
 
@@ -183,7 +236,7 @@ public class StudentDetailsUpdationForm
     }
     public  static void  main(String[] args)
     {
-        new StudentDetailsUpdationForm();
+        new NewUserRegister();
     }
 
  }
