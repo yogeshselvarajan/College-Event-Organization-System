@@ -39,7 +39,7 @@ public class LoginPageDesign  extends JFrame
 
     public static void main(String[] args) {
         LoginPageDesign frame = new LoginPageDesign();
-        frame.setTitle("Login Form");
+        frame.setTitle("Login Page");
         frame.setVisible(true);
         frame.setBounds(250, 250, 370, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
