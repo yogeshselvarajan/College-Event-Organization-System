@@ -1,3 +1,4 @@
+
 package project.college.event.organizer;
 
 import java.awt.*;
@@ -44,40 +45,40 @@ public class MeetingRegistration
         start_time.setFont(new Font("Calibri", Font.ITALIC, 22));
         f.add(start_time);
 
-            /** Choice List Declaration for Hours, Minutes and AM/PM */
-            Choice HH = new Choice();
-            Choice MM = new Choice();
-            Choice AM_PM = new Choice();
-            HH.setBounds(600,165,45,30);
-            MM.setBounds(655,165,45,30);
-            AM_PM.setBounds(705,165,45,30);
-            f.add(HH);f.add(MM);f.add(AM_PM);
+        /** Choice List Declaration for Hours, Minutes and AM/PM */
+        Choice HH = new Choice();
+        Choice MM = new Choice();
+        Choice AM_PM = new Choice();
+        HH.setBounds(600,165,45,30);
+        MM.setBounds(655,165,45,30);
+        AM_PM.setBounds(705,165,45,30);
+        f.add(HH);f.add(MM);f.add(AM_PM);
 
-            /** Choice List Options for Hours */
-            HH.add("01"); HH.add("02"); HH.add("03"); HH.add("04"); HH.add("05");
-            HH.add("06"); HH.add("07"); HH.add("08"); HH.add("09"); HH.add("10");
-            HH.add("11"); HH.add("12");
-            f.add(HH);
+        /** Choice List Options for Hours */
+        HH.add("01"); HH.add("02"); HH.add("03"); HH.add("04"); HH.add("05");
+        HH.add("06"); HH.add("07"); HH.add("08"); HH.add("09"); HH.add("10");
+        HH.add("11"); HH.add("12");
+        f.add(HH);
 
-            /** Choice List Options for Minutes */
-            MM.add("00");
-            MM.add("01"); MM.add("02"); MM.add("03"); MM.add("04"); MM.add("05");
-            MM.add("06"); MM.add("07"); MM.add("08"); MM.add("09"); MM.add("10");
-            MM.add("11"); MM.add("12"); MM.add("13"); MM.add("14"); MM.add("15");
-            MM.add("16");MM.add("17");MM.add("18");MM.add("19");MM.add("20");
-            MM.add("21");MM.add("22");MM.add("23");MM.add("24");MM.add("25");
-            MM.add("26");MM.add("27");MM.add("28");MM.add("29");MM.add("25");
-            MM.add("31");MM.add("32");MM.add("33");MM.add("34");MM.add("35");
-            MM.add("36");MM.add("37");MM.add("38");MM.add("39");MM.add("40");
-            MM.add("41");MM.add("42");MM.add("43");MM.add("44");MM.add("45");
-            MM.add("46");MM.add("47");MM.add("48");MM.add("49");MM.add("50");
-            MM.add("51");MM.add("52");MM.add("53");MM.add("54");MM.add("55");
-            MM.add("56");MM.add("57");MM.add("58");MM.add("59");
-            f.add(MM);
+        /** Choice List Options for Minutes */
+        MM.add("00");
+        MM.add("01"); MM.add("02"); MM.add("03"); MM.add("04"); MM.add("05");
+        MM.add("06"); MM.add("07"); MM.add("08"); MM.add("09"); MM.add("10");
+        MM.add("11"); MM.add("12"); MM.add("13"); MM.add("14"); MM.add("15");
+        MM.add("16");MM.add("17");MM.add("18");MM.add("19");MM.add("20");
+        MM.add("21");MM.add("22");MM.add("23");MM.add("24");MM.add("25");
+        MM.add("26");MM.add("27");MM.add("28");MM.add("29");MM.add("25");
+        MM.add("31");MM.add("32");MM.add("33");MM.add("34");MM.add("35");
+        MM.add("36");MM.add("37");MM.add("38");MM.add("39");MM.add("40");
+        MM.add("41");MM.add("42");MM.add("43");MM.add("44");MM.add("45");
+        MM.add("46");MM.add("47");MM.add("48");MM.add("49");MM.add("50");
+        MM.add("51");MM.add("52");MM.add("53");MM.add("54");MM.add("55");
+        MM.add("56");MM.add("57");MM.add("58");MM.add("59");
+        f.add(MM);
 
-            /** Choice List Options for AM / PM */
-            AM_PM.add("AM");AM_PM.add("PM");
-            f.add(AM_PM);
+        /** Choice List Options for AM / PM */
+        AM_PM.add("AM");AM_PM.add("PM");
+        f.add(AM_PM);
 
         /** "Meeting Type" Label and Text Field Declaration */
         meeting_type= new JLabel("Meeting Type");
@@ -110,53 +111,53 @@ public class MeetingRegistration
         start_date.setFont(new Font("Calibri", Font.ITALIC, 22));
         f.add(start_date);
 
-            /** Choice List Options for Month */
-            Choice start_Month = new Choice();
-            start_Month.setBounds(600,300,90,25);
-            start_Month.add("January");
-            start_Month.add("February");start_Month.add("March");start_Month.add("April");start_Month.add("May");
-            start_Month.add("June");start_Month.add("July");start_Month.add("August");start_Month.add("September");
-            start_Month.add("October");start_Month.add("November");start_Month.add("December");
-            f.add(start_Month);
+        /** Choice List Options for Month */
+        Choice start_Month = new Choice();
+        start_Month.setBounds(600,300,90,25);
+        start_Month.add("January");
+        start_Month.add("February");start_Month.add("March");start_Month.add("April");start_Month.add("May");
+        start_Month.add("June");start_Month.add("July");start_Month.add("August");start_Month.add("September");
+        start_Month.add("October");start_Month.add("November");start_Month.add("December");
+        f.add(start_Month);
 
-            /** Choice List Options for Date */
-            Choice start_Date = new Choice();
-            start_Date.setBounds(700,300,45,25);
-            start_Date.add("01"); start_Date.add("02"); start_Date.add("03"); start_Date.add("04"); start_Date.add("05");
-            start_Date.add("06"); start_Date.add("07"); start_Date.add("08"); start_Date.add("09"); start_Date.add("10");
-            start_Date.add("11"); start_Date.add("12"); start_Date.add("13"); start_Date.add("14"); start_Date.add("15");
-            start_Date.add("16");start_Date.add("17");start_Date.add("18");start_Date.add("19");start_Date.add("20");
-            start_Date.add("21");start_Date.add("22");start_Date.add("23");start_Date.add("24");start_Date.add("25");
-            start_Date.add("26");start_Date.add("27");start_Date.add("28");start_Date.add("29");start_Date.add("25");
-            start_Date.add("31");
-            f.add(start_Date);
+        /** Choice List Options for Date */
+        Choice start_Date = new Choice();
+        start_Date.setBounds(700,300,45,25);
+        start_Date.add("01"); start_Date.add("02"); start_Date.add("03"); start_Date.add("04"); start_Date.add("05");
+        start_Date.add("06"); start_Date.add("07"); start_Date.add("08"); start_Date.add("09"); start_Date.add("10");
+        start_Date.add("11"); start_Date.add("12"); start_Date.add("13"); start_Date.add("14"); start_Date.add("15");
+        start_Date.add("16");start_Date.add("17");start_Date.add("18");start_Date.add("19");start_Date.add("20");
+        start_Date.add("21");start_Date.add("22");start_Date.add("23");start_Date.add("24");start_Date.add("25");
+        start_Date.add("26");start_Date.add("27");start_Date.add("28");start_Date.add("29");start_Date.add("25");
+        start_Date.add("31");
+        f.add(start_Date);
 
-            /** Choice List Options for Year */
-            Choice start_Year = new Choice();
-            start_Year.setBounds(750,300,100,25);
-            start_Year.add("2021");start_Year.add("2022");start_Year.add("2023");start_Year.add("2024");
-            start_Year.add("2025");
-            f.add(start_Year);
+        /** Choice List Options for Year */
+        Choice start_Year = new Choice();
+        start_Year.setBounds(750,300,100,25);
+        start_Year.add("2021");start_Year.add("2022");start_Year.add("2023");start_Year.add("2024");
+        start_Year.add("2025");
+        f.add(start_Year);
 
         /** "Meeting Options" Label and Radio-Button Declaration */
         meeting_options = new JLabel("Meeting Options ");
         meeting_options.setBounds(250,345,200,25);
         meeting_options.setFont(new Font("Calibri", Font.ITALIC, 22));
         f.add(meeting_options);
-            /** Radio Button Declarations for Meeting Options */
-            JRadioButton single,weekly,month;
-            single = new JRadioButton("Single");
-            single.setBounds(600,345,100,25);
+        /** Radio Button Declarations for Meeting Options */
+        JRadioButton single,weekly,month;
+        single = new JRadioButton("Single");
+        single.setBounds(600,345,100,25);
 
-            weekly = new JRadioButton("Weekly");
-            weekly.setBounds(700,345,100,25);
+        weekly = new JRadioButton("Weekly");
+        weekly.setBounds(700,345,100,25);
 
-            month = new JRadioButton("Monthly");
-            month.setBounds(800,345,100,25);
+        month = new JRadioButton("Monthly");
+        month.setBounds(800,345,100,25);
 
-            ButtonGroup bg=new ButtonGroup();
-            bg.add(single);bg.add(weekly);bg.add(month);
-            f.add(single);f.add(weekly);f.add(month);
+        ButtonGroup bg=new ButtonGroup();
+        bg.add(single);bg.add(weekly);bg.add(month);
+        f.add(single);f.add(weekly);f.add(month);
 
         /** "Number of Participants" Label and TextField Declaration */
         num_of_participants=new JLabel("Number of Participants");
@@ -228,6 +229,18 @@ public class MeetingRegistration
         f.setSize(1600,775);
         f.setLayout(null);
         f.setVisible(true);
+        submit.setFocusable(false);
+        reset.setFocusable(false);
+        single.setFocusable(false);
+        weekly.setFocusable(false);
+        month.setFocusable(false);
+        start_Date.setFocusable(false);
+        start_Month.setFocusable(false);
+        start_Year.setFocusable(false);
+        HH.setFocusable(false);
+        MM.setFocusable(false);
+        AM_PM.setFocusable(false);
+        dur.setFocusable(false);
     }
 
     // Driver Code
@@ -237,4 +250,3 @@ public class MeetingRegistration
     }
 
 }
-
