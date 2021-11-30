@@ -82,11 +82,11 @@ public class UsernameAvailablility
             String Username= username_field.getText();
             String passText = new String(passwordField.getPassword());
             String passText_confirm = new String(passwordField1.getPassword());
-
+            if(passText.equals(passText_confirm)) {
                 try {
                     Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
                     String final_pass = passText_confirm;
-                    String query = "INSERT INTO students values('" + Username + "','" + final_pass + "')";
+                    String query = "INSERT INTO userdb values('" + Username + "','" + final_pass + "')";
 
                     Statement sta = conn.createStatement();
                     int x = sta.executeUpdate(query);
@@ -98,6 +98,11 @@ public class UsernameAvailablility
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(Register, "Passwords Dont Match! Retry Again");
+            }
         });
 
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
