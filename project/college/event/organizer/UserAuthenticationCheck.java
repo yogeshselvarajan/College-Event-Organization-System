@@ -65,6 +65,9 @@ public class UserAuthenticationCheck
         f.add(answer1);f.add(answer2);
         f.add(answer_field1);f.add(answer_field2);
 
+        String answer_1 = answer_field1.getText();
+        String answer_2 = answer_field2.getText();
+
         JButton submit ;
         submit = new JButton("Submit");
         submit.setBounds(600,370,80,50);
@@ -83,7 +86,7 @@ public class UserAuthenticationCheck
         f.setLayout(null);
         f.setVisible(true);
     }
-    public  static void  main(String[] args)
+    public  static void  main()
     {
         new UserAuthenticationCheck();
     }

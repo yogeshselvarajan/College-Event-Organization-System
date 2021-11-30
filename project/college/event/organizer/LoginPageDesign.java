@@ -1,6 +1,7 @@
 package project.college.event.organizer;
 
 import java.awt.*;
+import java.sql.*;
 import javax.swing.*;
 
 public class LoginPageDesign  extends JFrame
@@ -39,6 +40,10 @@ public class LoginPageDesign  extends JFrame
         addComponents();
     }
 
+    public static void main() {
+        LoginPageDesign.main(null);
+    }
+
     public void addComponents() {
         container.add(userNameLabel);
         container.add(userNameTextField);
@@ -57,10 +62,39 @@ public class LoginPageDesign  extends JFrame
             //Calling Registration UsernameChecker
             UsernameAvailablility obj = new UsernameAvailablility();
         });
-    }
 
-    public void connectDB()
-    {
+        forgetPassword.addActionListener(e ->
+        {
+            // To get the Username from the user
+            GetUserNameForReset getusername = new GetUserNameForReset();
+        });
+        loginButton.addActionListener(e ->
+        {
+            String DB_URL = "jdbc:mysql://localhost:3306/projectdb";
+            String PASS = "localhost";
+            String USER = "root";
+            String get_username = userNameTextField.getText();
+            String get_password = passwordField.getPassword().toString();
+
+            try {
+                Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+                PreparedStatement preparedStatement = connection.prepareStatement("select * from userdb");
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    String username_col = resultSet.getString("User_name");
+                    String password_col = resultSet.getString("Password");
+                    if (get_username.equals(username_col) == true && get_password.equals(password_col) == true) {
+                        JOptionPane.showMessageDialog(loginButton, "Login Successful ");
+                    } else {
+                        JOptionPane.showMessageDialog(loginButton, "Please Check your credentials!");
+                    }
+                }
+                resultSet.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } ;
+
+        });
 
     }
 
@@ -72,7 +106,6 @@ public class LoginPageDesign  extends JFrame
         frame.setBounds(250, 250, 370, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-
 
     }
 }

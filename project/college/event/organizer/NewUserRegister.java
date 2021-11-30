@@ -181,11 +181,12 @@ public class NewUserRegister
         submit.addActionListener(e -> {
             String Name = name1.getText();
             String Mobile = mobile1.getText();
-            String emailID = email.getText();
+            String emailID = email1.getText();
             String Address = address1.getText();
             String Answer1 = answer1.getText();
             String Answer2 = answer2.getText();
             String CollegeID = college_id1.getText();
+            String Section = cbg.getSelectedCheckbox().getLabel();
             int len = Mobile.length();
             String msg = "" + Name;
             String BDay = birthday_Date.getSelectedItem().toString() + "-"
@@ -203,16 +204,20 @@ public class NewUserRegister
                         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdb", "root", "localhost");
 
                         String query = "INSERT INTO students values('" + Name + "','" + Mobile + "','" + emailID + "','" +
-                                Address + "','" + Answer1 + "','" + Answer2 + "','" + CollegeID + "','" + BDay + "','" + Department + "')";
+                                Address + "','" + Answer1 + "','" + Answer2 + "','" + CollegeID + "','" + BDay + "','" + Department + "','" + Section + "')";
 
                         Statement sta = connection.createStatement();
                         int x = sta.executeUpdate(query);
                         if (x == 0) {
                             JOptionPane.showMessageDialog(submit, "An account with this details already exists !" +
-                                    "Sign in ");
+                                    "Sign in instead ! You will be  now redirected to Login Page ...");
+                            new RedirectToLogin();
+                            RedirectToLogin.main();
                         } else {
                             JOptionPane.showMessageDialog(submit,
-                                    "Welcome, " + msg + "Your account is successfully created");
+                                    "Welcome, " + msg + "Your account is successfully created! You will be now redirected to Login Page ...");
+                            new RedirectToLogin();
+                            RedirectToLogin.main();
                         }
                         connection.close();
                     } catch (Exception exception) {
