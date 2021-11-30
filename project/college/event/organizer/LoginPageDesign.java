@@ -52,6 +52,11 @@ public class LoginPageDesign  extends JFrame
         JLabel background=new JLabel(new ImageIcon("E:\\College-Event-Organization-System\\2805308.png"));
         add(background);
         background.setLayout(new FlowLayout());
+        registerButton.addActionListener(e->
+        {
+            //Calling Registration UsernameChecker
+            UsernameAvailablility obj = new UsernameAvailablility();
+        });
     }
 
     public void connectDB()
@@ -67,6 +72,8 @@ public class LoginPageDesign  extends JFrame
         frame.setBounds(250, 250, 370, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
+
+
     }
 }
 

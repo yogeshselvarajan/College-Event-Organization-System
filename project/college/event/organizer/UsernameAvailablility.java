@@ -95,6 +95,10 @@ public class UsernameAvailablility
                     else
                         JOptionPane.showMessageDialog(Register, "Your Basic Login Details are stored...");
                     conn.close();
+
+                    // Calling The NewRegisterForm if it exists
+                    NewUserRegister obj = new NewUserRegister();
+
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
