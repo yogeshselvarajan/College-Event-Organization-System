@@ -1,4 +1,4 @@
-package project.college.event.organizer;
+package project.college.event.organizer.login;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
