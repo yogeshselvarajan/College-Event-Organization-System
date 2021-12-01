@@ -1,5 +1,5 @@
 
-package project.college.event.organizer.login;
+package project.college.event.organizer.events;
 
 import java.awt.*;
 import javax.swing.*;
