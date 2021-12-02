@@ -95,7 +95,7 @@ public class NewUserRegister
         /************** END OF THE LABEL PART **********************/
 
         /** DECLARATION OF THE TEXT BOXES*/
-        JTextField name1,mobile1,email1,password1,username1,college_id1;
+        JTextField name1,mobile1,email1,college_id1;
 
         name1 = new JTextField();
         name1.setBounds(600,163,300,30);
