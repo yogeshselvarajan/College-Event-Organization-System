@@ -19,7 +19,7 @@ public class FineArtsReg
 
         /** Declaring the initial variables of the type JLabel for all the necessary labels */
         JLabel event_name,event_description,start_time;
-        JLabel duration,event_ty,event_per,event_type,num_of_participants;
+        JLabel duration,event_per,num_of_participants;
         JLabel schedule_event_id,college_id,email_id;
 
         /** "Event Name" Label and TextField Definition */
@@ -42,31 +42,18 @@ public class FineArtsReg
         /** "Start Time" Label and HH , MM , AM/PM Choice List Declaration */
 
         start_time = new JLabel("Start Time");
-        start_time.setBounds(250,165,200,30);
+        start_time.setBounds(250,173,200,30);
         start_time.setFont(new Font("Calibri", Font.ITALIC, 22));
         f.add(start_time);
 
-        /** declaration of event type */
-
-        event_type = new JLabel("Start Time");
-        event_type.setBounds(250,493,200,30);
-        event_type.setFont(new Font("Calibri", Font.ITALIC, 22));
-        f.add(event_type);
-
-        Choice event_ty = new Choice();
-        event_ty.setBounds(700,300,45,25);
-        event_ty.add("01"); event_ty.add("02"); event_ty.add("03"); event_ty.add("04"); event_ty.add("05");
-        event_ty.add("06"); event_ty.add("07"); event_ty.add("08"); event_ty.add("09"); event_ty.add("10");
-
-        f.add(event_ty);
 
         /** Choice List Declaration for Hours, Minutes and AM/PM */
         Choice HH = new Choice();
         Choice MM = new Choice();
         Choice AM_PM = new Choice();
-        HH.setBounds(600,165,45,30);
-        MM.setBounds(655,165,45,30);
-        AM_PM.setBounds(705,165,45,30);
+        HH.setBounds(600,170,45,30);
+        MM.setBounds(655,170,45,30);
+        AM_PM.setBounds(705,170,45,30);
         f.add(HH);f.add(MM);f.add(AM_PM);
 
         /** Choice List Options for Hours */
@@ -97,29 +84,29 @@ public class FineArtsReg
 
         /** "Duration" Label and Text Field and Mins/Hours ChoiceList Declaration */
         duration = new JLabel("Duration");
-        duration.setBounds(250,250,200,25);
+        duration.setBounds(250,220,200,25);
         duration.setFont(new Font("Calibri", Font.ITALIC, 22));
         f.add(duration);
         // TextField that takes the input (Hours or Mins)
         JTextField duration_field;
         duration_field = new JTextField();
-        duration_field.setBounds(600,250,100,25);
+        duration_field.setBounds(600,216,100,25);
         f.add(duration_field);
         // Choice List Declaration that shows Mins / Hours Options
         Choice dur = new Choice();
-        dur.setBounds(725,250,70,25);
+        dur.setBounds(725,216,70,25);
         dur.add("MINS"); dur.add("HOURS");
         f.add(dur);
 
         /** "Start Date" Label and Month, Date and Year Choice Declaration */
-        event = new JLabel("Start Date");
-        event_t.setBounds(250,300,200,25);
-        event_t.setFont(new Font("Calibri", Font.ITALIC, 22));
-        f.add(event_t);
+        JLabel event_date = new JLabel("Start Date");
+        event_date.setBounds(250,280,200,25);
+        event_date.setFont(new Font("Calibri", Font.ITALIC, 22));
+        f.add(event_date);
 
         /** Choice List Options for Month */
         Choice start_Month = new Choice();
-        start_Month.setBounds(600,300,90,25);
+        start_Month.setBounds(600,276,90,25);
         start_Month.add("January");
         start_Month.add("February");start_Month.add("March");start_Month.add("April");start_Month.add("May");
         start_Month.add("June");start_Month.add("July");start_Month.add("August");start_Month.add("September");
@@ -127,40 +114,40 @@ public class FineArtsReg
         f.add(start_Month);
 
         /** Choice List Options for Date */
-        Choice event_t = new Choice();
-        event_t.setBounds(700,300,45,25);
-        event_t.add("01"); event_ty.add("02"); event_ty.add("03"); event_ty.add("04"); event_ty.add("05");
-        event_t.add("06"); event_ty.add("07"); event_ty.add("08"); event_ty.add("09"); event_ty.add("10");
-        event_t.add("11"); event_ty.add("12"); event_ty.add("13"); event_ty.add("14"); event_ty.add("15");
-        event_t.add("16");event_ty.add("17");event_ty.add("18");event_ty.add("19");event_ty.add("20");
-        event_t.add("21");event_ty.add("22");event_ty.add("23");event_ty.add("24");event_ty.add("25");
-        event_t.add("26");event_ty.add("27");event_ty.add("28");event_ty.add("29");event_ty.add("25");
-        event_t.add("31");
-        f.add(event_t);
+        Choice event_t1 = new Choice();
+        event_t1.setBounds(700,276,45,25);
+        event_t1.add("01"); event_t1.add("02"); event_t1.add("03"); event_t1.add("04"); event_t1.add("05");
+        event_t1.add("06"); event_t1.add("07"); event_t1.add("08"); event_t1.add("09"); event_t1.add("10");
+        event_t1.add("11"); event_t1.add("12"); event_t1.add("13"); event_t1.add("14"); event_t1.add("15");
+        event_t1.add("16");event_t1.add("17");event_t1.add("18");event_t1.add("19");event_t1.add("20");
+        event_t1.add("21");event_t1.add("22");event_t1.add("23");event_t1.add("24");event_t1.add("25");
+        event_t1.add("26");event_t1.add("27");event_t1.add("28");event_t1.add("29");event_t1.add("30");
+        event_t1.add("31");
+        f.add(event_t1);
 
         /** Choice List Options for Year */
         Choice start_Year = new Choice();
-        start_Year.setBounds(750,300,100,25);
+        start_Year.setBounds(750,276,100,25);
         start_Year.add("2021");start_Year.add("2022");start_Year.add("2023");start_Year.add("2024");
         start_Year.add("2025");
         f.add(start_Year);
 
         /** "Meeting Options" Label and Radio-Button Declaration */
         event_per = new JLabel("Event Type ");
-        event_per.setBounds(250,345,200,25);
+        event_per.setBounds(250,330,200,25);
         event_per.setFont(new Font("Calibri", Font.ITALIC, 22));
         f.add(event_per);
 
         /** Radio Button Declarations for Meeting Options */
         JRadioButton single,weekly,month;
         single = new JRadioButton("Solo");
-        single.setBounds(600,345,100,25);
+        single.setBounds(600,330,100,25);
 
         weekly = new JRadioButton("Duo");
-        weekly.setBounds(700,345,100,25);
+        weekly.setBounds(700,330,100,25);
 
         month = new JRadioButton("Group");
-        month.setBounds(800,345,100,25);
+        month.setBounds(800,330,100,25);
 
         ButtonGroup bg=new ButtonGroup();
         bg.add(single);bg.add(weekly);bg.add(month);
@@ -168,19 +155,33 @@ public class FineArtsReg
 
         /** "Number of Participants" Label and TextField Declaration */
         num_of_participants=new JLabel("Number of Participants(If Group)");
-        num_of_participants.setBounds(250,395,350,25);
+        num_of_participants.setBounds(250,435,350,25);
         JTextField participants_field =new JTextField();
-        participants_field.setBounds(600,395,90,25);
+        participants_field.setBounds(600,430,90,25);
         num_of_participants.setFont(new Font("Calibri", Font.ITALIC, 22));
         f.add(num_of_participants);f.add(participants_field);
 
+        /** Category of event declaration */
+        JLabel category = new JLabel("Category");
+        category.setBounds(250,376,200,30);
+        category.setFont(new Font("Calibri", Font.ITALIC, 22));
+        f.add(category);
+
+        Choice category1 = new Choice();
+        category1.setBounds(600,380,120,25);
+        category1.add("Classical Dance"); category1.add("Folk dance"); category1.add("Singing"); category1.add("Orchestra"); category1.add("Art");
+        category1.add("Painting"); category1.add("Writing"); category1.add("Taboo"); category1.add("Mimicry"); category1.add("Rangoli"); category1.add("Pattimandram");
+        category1.add("Elocution");
+
+        f.add(category1);
+
         /** "Schedule Meeting with ID" Label and TextField Declaration */
         schedule_event_id = new JLabel("Schedule Event with ID");
-        schedule_event_id.setBounds(250,445,400,25);
+        schedule_event_id.setBounds(250,490,400,25);
         schedule_event_id.setFont(new Font("Calibri", Font.ITALIC, 22));
         f.add(schedule_event_id);
         JTextField meeting_id_field =new JTextField();
-        meeting_id_field.setBounds(600,445,90,25);
+        meeting_id_field.setBounds(600,485,90,25);
         f.add(meeting_id_field);
 
         /** "College ID" Label and TextField Declaration */
