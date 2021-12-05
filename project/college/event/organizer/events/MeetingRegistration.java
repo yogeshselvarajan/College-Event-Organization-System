@@ -128,7 +128,7 @@ public class MeetingRegistration
         start_Date.add("11"); start_Date.add("12"); start_Date.add("13"); start_Date.add("14"); start_Date.add("15");
         start_Date.add("16");start_Date.add("17");start_Date.add("18");start_Date.add("19");start_Date.add("20");
         start_Date.add("21");start_Date.add("22");start_Date.add("23");start_Date.add("24");start_Date.add("25");
-        start_Date.add("26");start_Date.add("27");start_Date.add("28");start_Date.add("29");start_Date.add("25");
+        start_Date.add("26");start_Date.add("27");start_Date.add("28");start_Date.add("29");start_Date.add("30");
         start_Date.add("31");
         f.add(start_Date);
 

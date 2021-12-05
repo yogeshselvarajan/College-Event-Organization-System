@@ -14,8 +14,7 @@ public class FineArtsReg
         title.setBounds(400,05,600,25);
         title.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
         f.add(title);
-        f.setBackground(Color.cyan);
-        f.setForeground(Color.black);
+
 
         /** Declaring the initial variables of the type JLabel for all the necessary labels */
         JLabel event_name,event_description,start_time;

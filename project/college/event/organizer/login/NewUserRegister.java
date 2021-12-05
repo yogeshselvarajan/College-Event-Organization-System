@@ -150,11 +150,12 @@ public class NewUserRegister
                 {
                         "Select your Course",
                         "B.E. Computer Science and Engineering",
-                        "B.E. Artificial Intelligence and Data Science",
-                        "B.E. BioTechnology",
+                        "B.Tech. Artificial Intelligence and Data Science",
+                        "B.Tech. BioTechnology",
                         "B.E. BioMedical Engineering",
-                        "B.E.Electronics and Communication Engineering",
-                        "B.E. Information Technology",
+                        "B.E. Electronics and Communication Engineering",
+                        "B.E. Electrical and Electronics Engineering",
+                        "B.Tech. Information Technology",
                         "B.E. Mechanical Engineering",
                         "B.E. Civil Engineering",
                 };
