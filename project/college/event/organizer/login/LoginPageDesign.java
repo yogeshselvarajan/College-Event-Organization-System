@@ -3,7 +3,6 @@ package project.college.event.organizer.login;
 import java.awt.*;
 import java.sql.*;
 import javax.swing.*;
-
 public class LoginPageDesign  extends JFrame
 {
     JLabel userNameLabel, passwordLabel,registerLabel;

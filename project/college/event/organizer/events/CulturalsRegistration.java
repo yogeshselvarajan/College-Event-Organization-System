@@ -7,6 +7,7 @@ import java.awt.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.util.Objects;
 
 public class CulturalsRegistration
 {
@@ -114,30 +115,31 @@ public class CulturalsRegistration
         events_available.setBounds(250,370,150,25);
         events_available.setFont(new Font("Calibri", Font.ITALIC, 17));
         f.add(events_available);
-        CheckboxGroup cbg=new CheckboxGroup();
-        Checkbox ck1=new Checkbox("Solo Singing",false,cbg);
+
+        CheckboxGroup check_box_group = new CheckboxGroup();
+        final Checkbox ck1=new Checkbox("Solo Singing",false);
         ck1.setBounds(400,370,200,30);
-        Checkbox ck2=new Checkbox("Jam",false,cbg);
+        final Checkbox ck2=new Checkbox("Jam",false);
         ck2.setBounds(400,395,80,30);
-        Checkbox ck3 = new Checkbox("Classical Bhajan",false,cbg);
+        final Checkbox ck3 = new Checkbox("Classical Bhajan",false);
         ck3.setBounds(400,420,200,30);
-        Checkbox ck4 = new Checkbox("Rock Band",false,cbg);
+        final Checkbox ck4 = new Checkbox("Rock Band",false);
         ck4.setBounds(400,455,200,30);
-        Checkbox ck5 = new Checkbox("Debate",false,cbg);
+        final Checkbox ck5 = new Checkbox("Debate",false);
         ck5.setBounds(400,480,200,30);
-        Checkbox ck6 = new Checkbox("Group Dance",false,cbg);
+        final Checkbox ck6 = new Checkbox("Group Dance",false);
         ck6.setBounds(400,505,200,30);
-        Checkbox ck7 = new Checkbox("Bharathanatyam",false,cbg);
+        final Checkbox ck7 = new Checkbox("Bharathanatyam",false);
         ck7.setBounds(400,530,200,30);
-        Checkbox ck8 = new Checkbox("Instrumental Fashion",false,cbg);
+        final Checkbox ck8 = new Checkbox("Instrumental Fashion",false);
         ck8.setBounds(400,555,200,30);
-        Checkbox ck9 = new Checkbox("Brass Band",false,cbg);
+        final Checkbox ck9 = new Checkbox("Brass Band",false);
         ck9.setBounds(400,580,200,30);
-        Checkbox ck10 = new Checkbox("Battle of Bands",false,cbg);
+        final Checkbox ck10 = new Checkbox("Battle of Bands",false);
         ck10.setBounds(400,605,200,30);
-        Checkbox ck11 = new Checkbox("Folk arts and Music",false,cbg);
+        final Checkbox ck11 = new Checkbox("Folk arts and Music",false);
         ck11.setBounds(400,630,200,30);
-        Checkbox ck12 = new Checkbox("Quiz",false,cbg);
+        final Checkbox ck12 = new Checkbox("Quiz",false);
         ck12.setBounds(400,655,200,30);
         f.add(ck1);f.add(ck2);f.add(ck3);f.add(ck4);f.add(ck5);
         f.add(ck6);f.add(ck7);f.add(ck8);f.add(ck9);f.add(ck10);
@@ -145,19 +147,42 @@ public class CulturalsRegistration
 
         JButton submit = new JButton("Submit");
         submit.setBounds(500,690,100,30);
-        f.add(submit);
 
         submit.addActionListener( e ->
         {
             String Name = student_name_field.getText();
-            String Department = department_box.getSelectedItem().toString();
+            String Department = Objects.requireNonNull(department_box.getSelectedItem()).toString();
             String Year_Section = year_field.getText();
             String Age = age_field.getText();
             String College_Name = college_name_field.getText();
             String Contact_Number = contact_num_field.getText();
             String Name_of_Faculty = name_of_faculty_field.getText();
             String Email = email_id_field.getText();
-            String Event_Choosen = cbg.getSelectedCheckbox().getLabel();
+            String Event_Choosen = "";
+            if (ck1.getState())
+                Event_Choosen +=ck1.getLabel()+ ",";
+            if (ck2.getState())
+                Event_Choosen += ck2.getLabel() + ",";
+            if (ck3.getState())
+                Event_Choosen += ck3.getLabel() + ",";
+            if (ck4.getState())
+                Event_Choosen += ck4.getLabel() + ",";
+            if (ck5.getState())
+                Event_Choosen += ck5.getLabel() + ",";
+            if (ck6.getState())
+                Event_Choosen += ck6.getLabel() + ",";
+            if (ck7.getState())
+                Event_Choosen += ck7.getLabel() + ",";
+            if (ck8.getState())
+                Event_Choosen += ck8.getLabel() + ",";
+            if (ck9.getState())
+                Event_Choosen += ck9.getLabel() + ",";
+            if (ck10.getState())
+                Event_Choosen += ck10.getLabel() + ",";
+            if (ck11.getState())
+                Event_Choosen += ck11.getLabel() + ",";
+            if (ck12.getState())
+                Event_Choosen += ck12.getLabel() + ",";
 
             try {
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdb", "root", "localhost");
@@ -171,13 +196,15 @@ public class CulturalsRegistration
                     JOptionPane.showMessageDialog(submit, "An Error Occurred ! Retry again !");
                 } else {
                     JOptionPane.showMessageDialog(submit,
-                            "You have been successfully registered for the Culturals.  ");
+                            "You have been successfully registered for the Cultural Programme...  ");
                 }
                 connection.close();
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
         });
+
+        f.add(submit);
 
         /**  Frame Properties Declarations  */
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
