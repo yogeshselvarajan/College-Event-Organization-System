@@ -87,7 +87,7 @@ public class LoginPageDesign  extends JFrame
                     dispose();
                     JOptionPane.showMessageDialog(loginButton, "You have successfully logged in");}
                     else
-                        JOptionPane.showMessageDialog(loginButton, "Wrong Username & Password");
+                        JOptionPane.showMessageDialog(loginButton, "Wrong Username & Password entered (or) Account Not Found!!");
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             } ;

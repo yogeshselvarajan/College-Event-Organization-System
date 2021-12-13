@@ -56,17 +56,14 @@ public class UsernameAvailablility
             try {
                 Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
                 PreparedStatement preparedStatement = (PreparedStatement) connection
-                        .prepareStatement("Select User_Name from userdb where User_Name=?");
+                        .prepareStatement("Select User_Name from userdb where User_name=?");
+                //PreparedStatement preparedStatement = connection.prepareStatement("select * from userdb");
                 preparedStatement.setString(1, userName);
                 ResultSet resultSet = preparedStatement.executeQuery();
-                while (resultSet.next()) {
-                    String username_col = resultSet.getString("User_Name");
-                    if (userName == (username_col))
-                        JOptionPane.showMessageDialog(Check, "Username Taken Already! Retry with another username");
-                    else
-                        JOptionPane.showMessageDialog(Check, "Username Available . You can proceed the Registration Process");
-                    resultSet.close();
-                }
+                if (resultSet.next()) {
+                    JOptionPane.showMessageDialog(Check, "Username already Taken! Try with another Username");}
+                else
+                    JOptionPane.showMessageDialog(Check, "Username Available... Proceed to Next Steps");
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             } ;
