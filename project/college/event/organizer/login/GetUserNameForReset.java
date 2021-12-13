@@ -43,7 +43,7 @@ import javax.swing.*;
         submit.addActionListener(e ->
         {
             String DB_URL = "jdbc:mysql://localhost:3306/projectdb";
-            String PASS = "localhost";
+            String PASS = "root";
             String USER = "root";
             try {
                 Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);

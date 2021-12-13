@@ -53,7 +53,7 @@ public class LoginPageDesign  extends JFrame
         container.add(forgetPassword);
         container.add(registerLabel);
         setLayout(new BorderLayout());
-        JLabel background=new JLabel(new ImageIcon("E:\\College-Event-Organization-System\\2805308.png"));
+        JLabel background=new JLabel(new ImageIcon("project/college/event/organizer/2805308.png"));
         add(background);
         background.setLayout(new FlowLayout());
         registerButton.addActionListener(e->
@@ -70,31 +70,29 @@ public class LoginPageDesign  extends JFrame
         loginButton.addActionListener(e ->
         {
             String DB_URL = "jdbc:mysql://localhost:3306/projectdb";
-            String PASS = "localhost";
+            String PASS = "root";
             String USER = "root";
             String get_username = userNameTextField.getText();
-            String get_password = passwordField.getPassword().toString();
+            String get_password = String.valueOf(passwordField.getPassword());
 
             try {
                 Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-                PreparedStatement preparedStatement = connection.prepareStatement("select * from userdb");
+                PreparedStatement preparedStatement = (PreparedStatement) connection
+                        .prepareStatement("Select User_Name, Password from userdb where User_name=? and Password=?");
+                //PreparedStatement preparedStatement = connection.prepareStatement("select * from userdb");
+                preparedStatement.setString(1, get_username);
+                preparedStatement.setString(2, get_password);
                 ResultSet resultSet = preparedStatement.executeQuery();
-                while (resultSet.next()) {
-                    String username_col = resultSet.getString("User_name");
-                    String password_col = resultSet.getString("Password");
-                    if (get_username.equals(username_col) == true && get_password.equals(password_col) == true) {
-                        JOptionPane.showMessageDialog(loginButton, "Login Successful ");
-                    } else {
-                        JOptionPane.showMessageDialog(loginButton, "Please Check your credentials!");
-                    }
-                }
-                resultSet.close();
+                if (resultSet.next()) {
+                    dispose();
+                    JOptionPane.showMessageDialog(loginButton, "You have successfully logged in");}
+                    else
+                        JOptionPane.showMessageDialog(loginButton, "Wrong Username & Password");
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             } ;
 
         });
-
     }
 
     public static void main(String[] args)

@@ -51,19 +51,20 @@ public class UsernameAvailablility
         {
             String userName = username_field.getText();
             String DB_URL = "jdbc:mysql://localhost:3306/projectdb";
-            String PASS = "localhost";
+            String PASS = "root";
             String USER = "root";
             try {
                 Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-                PreparedStatement preparedStatement = connection.prepareStatement("select * from userdb");
+                PreparedStatement preparedStatement = (PreparedStatement) connection
+                        .prepareStatement("Select User_Name from userdb where User_Name=?");
+                preparedStatement.setString(1, userName);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
-                    String username_col = resultSet.getString("User_name");
-                    if (userName.equals(username_col) == true) {
-                        JOptionPane.showMessageDialog(Check, "Username Not Available!");
-                    } else {
+                    String username_col = resultSet.getString("User_Name");
+                    if (userName == (username_col))
+                        JOptionPane.showMessageDialog(Check, "Username Taken Already! Retry with another username");
+                    else
                         JOptionPane.showMessageDialog(Check, "Username Available . You can proceed the Registration Process");
-                    }
                     resultSet.close();
                 }
             } catch (SQLException throwables) {
@@ -77,7 +78,7 @@ public class UsernameAvailablility
         Register.addActionListener(e ->
         {
             String DB_URL = "jdbc:mysql://localhost:3306/projectdb";
-            String PASS = "localhost";
+            String PASS = "root";
             String USER = "root";
             String Username= username_field.getText();
             String passText = new String(passwordField.getPassword());

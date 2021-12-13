@@ -202,7 +202,7 @@ public class NewUserRegister
                 JOptionPane.showMessageDialog(submit, "Enter a valid (10-digit) mobile number ");
             }
                     try {
-                        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdb", "root", "localhost");
+                        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdb", "root", "root");
 
                         String query = "INSERT INTO students values('" + Name + "','" + Mobile + "','" + emailID + "','" +
                                 Address + "','" + Answer1 + "','" + Answer2 + "','" + CollegeID + "','" + BDay + "','" + Department + "','" + Section + "')";
