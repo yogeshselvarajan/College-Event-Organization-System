@@ -45,23 +45,22 @@ import javax.swing.*;
             String DB_URL = "jdbc:mysql://localhost:3306/projectdb";
             String PASS = "root";
             String USER = "root";
+
             try {
                 Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-                PreparedStatement preparedStatement = connection.prepareStatement("select * from userdb");
+                PreparedStatement preparedStatement = (PreparedStatement) connection
+                        .prepareStatement("Select User_Name from userdb where User_name=? ");
+                preparedStatement.setString(1, get_username);
                 ResultSet resultSet = preparedStatement.executeQuery();
-                while (resultSet.next()) {
-                    String username_col = resultSet.getString("User_name");
-                    if (get_username.equals(username_col))
-                    {
-                        JOptionPane.showMessageDialog(submit, "Username exists in the DB . You can proceed further to Authenticate your Identity");
-                        UserAuthenticationCheck.main();
-                    }
-                    else
-                    {
-                        JOptionPane.showMessageDialog(submit, "Username not found in the DB. Proceed to create a new acount");
-                        UsernameAvailablility.main();
-                    }
-                    resultSet.close();
+                if (resultSet.next()) {
+                    JOptionPane.showMessageDialog(submit, "Username exists in the DB... Proceed to confirm your identity");
+                    f.dispose();
+                    UserAuthenticationCheck obj = new UserAuthenticationCheck();
+                }
+                else{
+                    JOptionPane.showMessageDialog(submit, "An Account with the specified not found!!");
+                    f.dispose();
+                    RedirectToLogin obj = new RedirectToLogin();
                 }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();

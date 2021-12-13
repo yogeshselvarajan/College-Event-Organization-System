@@ -21,6 +21,7 @@ public class RedirectToLogin
             proceed.addActionListener(e ->
             {
                 //Calling Login Page again
+                f.dispose();
                 LoginPageDesign.main();
             });
             f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

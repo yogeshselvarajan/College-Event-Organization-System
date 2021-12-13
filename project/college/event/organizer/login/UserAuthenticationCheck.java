@@ -1,6 +1,8 @@
 package project.college.event.organizer.login;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.sql.*;
 import javax.swing.*;
 
 public class UserAuthenticationCheck
@@ -71,6 +73,28 @@ public class UserAuthenticationCheck
         JButton submit ;
         submit = new JButton("Submit");
         submit.setBounds(600,370,80,50);
+        submit.addActionListener(e ->
+        {
+            String DB_URL = "jdbc:mysql://localhost:3306/projectdb";
+            String PASS = "root";
+            String USER = "root";
+
+            try {
+                Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+                PreparedStatement preparedStatement = (PreparedStatement) connection
+                        .prepareStatement("Select Security_Answer_1, Security_Answer_2 from students where Security_Answer_1=? and Security_Answer_2=?");
+                //PreparedStatement preparedStatement = connection.prepareStatement("select * from userdb");
+                preparedStatement.setString(1, answer_1);
+                preparedStatement.setString(2, answer_2);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                if (resultSet.next()) {
+                    JOptionPane.showMessageDialog(submit, "You have successfully confirmed your identity.");}
+                else
+                    JOptionPane.showMessageDialog(submit, "Wrong Security Answers Given!!");
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } ;
+        });
         f.add(submit);
 
         JButton reset = new JButton("Reset");
