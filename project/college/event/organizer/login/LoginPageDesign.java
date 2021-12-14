@@ -67,33 +67,40 @@ public class LoginPageDesign  extends JFrame
             // To get the Username from the user
             GetUserNameForReset getusername = new GetUserNameForReset();
         });
+        String get_username = userNameTextField.getText();
+        String get_password = String.valueOf(passwordField.getPassword());
         loginButton.addActionListener(e ->
         {
-            String DB_URL = "jdbc:mysql://localhost:3306/projectdb";
-            String PASS = "root";
-            String USER = "root";
-            String get_username = userNameTextField.getText();
-            String get_password = String.valueOf(passwordField.getPassword());
+            /*if (get_username.contentEquals("") && get_password.contentEquals(""))
+                JOptionPane.showMessageDialog(loginButton, "No I/P detected... Please Enter your credentials to proceed!!");
+            else
+            {*/
+                String DB_URL = "jdbc:mysql://localhost:3306/projectdb";
+                String PASS = "root";
+                String USER = "root";
 
-            try {
-                Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-                PreparedStatement preparedStatement = (PreparedStatement) connection
-                        .prepareStatement("Select User_Name, Password from userdb where User_name=? and Password=?");
-                //PreparedStatement preparedStatement = connection.prepareStatement("select * from userdb");
-                preparedStatement.setString(1, get_username);
-                preparedStatement.setString(2, get_password);
-                ResultSet resultSet = preparedStatement.executeQuery();
-                if (resultSet.next()) {
-                    dispose();
-                    JOptionPane.showMessageDialog(loginButton, "You have successfully logged in");}
-                    else
+                try
+                {
+                    Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+                    PreparedStatement preparedStatement = (PreparedStatement) connection
+                            .prepareStatement("Select User_Name, Password from userdb where User_name=? and Password=?");
+                    //PreparedStatement preparedStatement = connection.prepareStatement("select * from userdb");
+                    preparedStatement.setString(1, get_username);
+                    preparedStatement.setString(2, get_password);
+                    ResultSet resultSet = preparedStatement.executeQuery();
+                    if (resultSet.next()) {
+                        dispose();
+                        JOptionPane.showMessageDialog(loginButton, "You have successfully logged in");
+                    } else
                         JOptionPane.showMessageDialog(loginButton, "Wrong Username & Password entered (or) Account Not Found!!");
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            } ;
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+                ;
 
         });
     }
+
 
     public static void main(String[] args)
     {
