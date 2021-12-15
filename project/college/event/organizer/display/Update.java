@@ -14,7 +14,7 @@ public class Update {
         JTable table = new JTable();
 
         // create a table model and set a Column Identifiers to this model
-        Object[] columns = {"Id","First Name","Last Name","Age"};
+        Object[] columns = {"Id","UserName","Password"};
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(columns);
 
@@ -30,9 +30,8 @@ public class Update {
 
         // create JTextFields
         JTextField textId = new JTextField();
-        JTextField textFname = new JTextField();
-        JTextField textLname = new JTextField();
-        JTextField textAge = new JTextField();
+        JTextField textUsername = new JTextField();
+        JTextField textPassword = new JTextField();
 
         // create JButtons
         JButton btnAdd = new JButton("Add");
@@ -40,9 +39,9 @@ public class Update {
         JButton btnUpdate = new JButton("Update");
 
         textId.setBounds(20, 220, 100, 25);
-        textFname.setBounds(20, 250, 100, 25);
-        textLname.setBounds(20, 280, 100, 25);
-        textAge.setBounds(20, 310, 100, 25);
+        textUsername.setBounds(20, 250, 100, 25);
+        textPassword.setBounds(20, 280, 100, 25);
+
 
         btnAdd.setBounds(150, 220, 100, 25);
         btnUpdate.setBounds(150, 265, 100, 25);
@@ -58,9 +57,8 @@ public class Update {
 
         // add JTextFields to the jframe
         frame.add(textId);
-        frame.add(textFname);
-        frame.add(textLname);
-        frame.add(textAge);
+        frame.add(textUsername);
+        frame.add(textPassword);
 
         // add JButtons to the jframe
         frame.add(btnAdd);
@@ -68,7 +66,7 @@ public class Update {
         frame.add(btnUpdate);
 
         // create an array of objects to set the row data
-        Object[] row = new Object[4];
+        Object[] row = new Object[3];
 
         // button add row
         btnAdd.addActionListener(new ActionListener(){
@@ -77,9 +75,8 @@ public class Update {
             public void actionPerformed(ActionEvent e) {
 
                 row[0] = textId.getText();
-                row[1] = textFname.getText();
-                row[2] = textLname.getText();
-                row[3] = textAge.getText();
+                row[1] = textUsername.getText();
+                row[2] = textPassword.getText();
 
                 // add row to the model
                 model.addRow(row);
@@ -114,9 +111,8 @@ public class Update {
                 int i = table.getSelectedRow();
 
                 textId.setText(model.getValueAt(i, 0).toString());
-                textFname.setText(model.getValueAt(i, 1).toString());
-                textLname.setText(model.getValueAt(i, 2).toString());
-                textAge.setText(model.getValueAt(i, 3).toString());
+                textUsername.setText(model.getValueAt(i, 1).toString());
+                textPassword.setText(model.getValueAt(i, 2).toString());
             }
         });
 
@@ -132,9 +128,8 @@ public class Update {
                 if(i >= 0)
                 {
                     model.setValueAt(textId.getText(), i, 0);
-                    model.setValueAt(textFname.getText(), i, 1);
-                    model.setValueAt(textLname.getText(), i, 2);
-                    model.setValueAt(textAge.getText(), i, 3);
+                    model.setValueAt(textUsername.getText(), i, 1);
+                    model.setValueAt(textPassword.getText(), i, 2);
                 }
                 else{
                     System.out.println("Update Error");
