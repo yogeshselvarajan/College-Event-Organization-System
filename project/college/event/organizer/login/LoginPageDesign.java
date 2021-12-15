@@ -71,16 +71,15 @@ public class LoginPageDesign  extends JFrame
         String get_password = String.valueOf(passwordField.getPassword());
         loginButton.addActionListener(e ->
         {
-            /*if (get_username.contentEquals("") && get_password.contentEquals(""))
-                JOptionPane.showMessageDialog(loginButton, "No I/P detected... Please Enter your credentials to proceed!!");
-            else
-            {*/
+            // Checking Blank Fields
+            if(get_username.trim().equals("") || get_password.trim().equals(""))
+                JOptionPane.showMessageDialog(null, "One Or More Fields Are Empty","Empty Fields",2);
+            else {
                 String DB_URL = "jdbc:mysql://localhost:3306/projectdb";
                 String PASS = "root";
                 String USER = "root";
 
-                try
-                {
+                try {
                     Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
                     PreparedStatement preparedStatement = (PreparedStatement) connection
                             .prepareStatement("Select User_Name, Password from userdb where User_name=? and Password=?");
@@ -97,7 +96,7 @@ public class LoginPageDesign  extends JFrame
                     throwables.printStackTrace();
                 }
                 ;
-
+            }
         });
     }
 

@@ -61,9 +61,9 @@ public class UsernameAvailablility
                 preparedStatement.setString(1, userName);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
-                    JOptionPane.showMessageDialog(Check, "Username already Taken! Try with another Username");}
+                    JOptionPane.showMessageDialog(null, "This Username is Already Taken, Choose Another One", "Username Failed", 2);}
                 else
-                    JOptionPane.showMessageDialog(Check, "Username Available... Proceed to Next Steps");
+                    JOptionPane.showMessageDialog(null, "Username Available... Create a password for your account","Username Available",1);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             } ;
@@ -80,7 +80,12 @@ public class UsernameAvailablility
             String Username= username_field.getText();
             String passText = new String(passwordField.getPassword());
             String passText_confirm = new String(passwordField1.getPassword());
-            if(passText.equals(passText_confirm)) {
+            if(Username.trim().equals("") || passText.trim().equals("") || passText_confirm.trim().equals(""))
+                JOptionPane.showMessageDialog(null, "One Or More Fields Are Empty","Empty Fields",2);
+            else if(!passText.equals(passText_confirm))
+                JOptionPane.showMessageDialog(null, "Password Doesn't Match","Confirm Password",2);
+            else
+            {
                 try {
                     Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
                     String final_pass = passText_confirm;
@@ -100,10 +105,6 @@ public class UsernameAvailablility
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(Register, "Passwords Dont Match! Retry Again");
             }
         });
 
