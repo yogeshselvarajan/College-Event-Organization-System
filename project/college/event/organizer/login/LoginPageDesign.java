@@ -53,7 +53,7 @@ public class LoginPageDesign  extends JFrame
         container.add(forgetPassword);
         container.add(registerLabel);
         setLayout(new BorderLayout());
-        JLabel background=new JLabel(new ImageIcon("project/college/event/organizer/2805308.png"));
+        JLabel background = new JLabel(new ImageIcon("3d dark.png "));
         add(background);
         background.setLayout(new FlowLayout());
         registerButton.addActionListener(e->

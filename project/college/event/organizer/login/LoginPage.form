@@ -88,6 +88,7 @@
             </constraints>
             <properties>
               <font name="Segoe Print" size="18" style="1"/>
+              <text value=""/>
             </properties>
           </component>
           <component id="cad3f" class="javax.swing.JLabel">

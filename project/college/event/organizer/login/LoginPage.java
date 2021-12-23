@@ -2,9 +2,10 @@ package project.college.event.organizer.login;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.sql.*;
+
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
 
 public class LoginPage extends JDialog
 {
@@ -33,14 +34,15 @@ public class LoginPage extends JDialog
 
                 if(user != null)
                     dispose();
+                else if (email.trim().equals("") || password.trim().equals(""))
+                    JOptionPane.showMessageDialog(null, "One Or More Fields Are Empty", "Empty Fields", 2);
                 else
                 {
                     JOptionPane.showMessageDialog(LoginPage.this,
                             "Email or Password Invalid",
                             "Try again",
-                            JOptionPane.ERROR_MESSAGE);
+                            ERROR_MESSAGE);
                 }
-
             }
         });
         btnCancel.addActionListener(new ActionListener() {
@@ -55,29 +57,28 @@ public class LoginPage extends JDialog
     }
 
     public User user;
-    private User getAuthenticatedUser(String email, String password)
-    {
+    private User getAuthenticatedUser(String email, String password) {
         User user = null;
 
-        final String DB_URL = "jdbc:mysql://localhost:3306/projectdb";
+        final String DB_URL = "jdbc:mysql://localhost:3306/project_db";
         final String USERNAME = "root";
         final String PASSWORD = "root";
 
         try
         {
             {
-                Connection conn = DriverManager.getConnection(DB_URL,USERNAME,PASSWORD);
+                Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
                 //Connected to the database successfully....
 
                 Statement stml = conn.createStatement();
                 String sql = " SELECT * FROM userdb WHERE Email=? AND Password=?";
-                PreparedStatement preparedStatement =conn.prepareStatement(sql);
-                preparedStatement.setString(1,email);
-                preparedStatement.setString(2,password);
+                PreparedStatement preparedStatement = conn.prepareStatement(sql);
+                preparedStatement.setString(1, email);
+                preparedStatement.setString(2, password);
 
                 ResultSet resultSet = preparedStatement.executeQuery();
 
-                if(resultSet.next())
+                if (resultSet.next())
                 {
                     user = new User();
                     user.email = resultSet.getString("email");
@@ -88,11 +89,9 @@ public class LoginPage extends JDialog
                 stml.close();
                 conn.close();
             }
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
         return user;
     }
 
@@ -101,14 +100,8 @@ public class LoginPage extends JDialog
         LoginPage loginPage = new LoginPage(null);
         User user = loginPage.user;
         if(user != null)
-        {
-           // JOptionPane.showMessageDialog(null,
-                   // "Successful Authentication of :" +user.name,
-                    //JOptionPane.ERROR_MESSAGE);
-            System.out.println("Successful Authentication of : " +user.name);
-            System.out.println("            Email: " + user.email);
-        }
+            JOptionPane.showMessageDialog(null, "You have successfully logged in");
         else
-            System.out.println("Authentication cancelled!");
+        JOptionPane.showMessageDialog(null, "Authentication cancelled!","Login Failed",ERROR_MESSAGE);
     }
 }
