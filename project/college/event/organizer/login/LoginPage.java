@@ -70,7 +70,7 @@ public class LoginPage extends JDialog
                 //Connected to the database successfully....
 
                 Statement stml = conn.createStatement();
-                String sql = " SELECT * FROM users WHERE email=? AND password=?";
+                String sql = " SELECT * FROM userdb WHERE Email=? AND Password=?";
                 PreparedStatement preparedStatement =conn.prepareStatement(sql);
                 preparedStatement.setString(1,email);
                 preparedStatement.setString(2,password);
@@ -80,11 +80,9 @@ public class LoginPage extends JDialog
                 if(resultSet.next())
                 {
                     user = new User();
-                    user.name = resultSet.getString("name");
                     user.email = resultSet.getString("email");
-                    user.phone = resultSet.getString("phone");
-                    user.address = resultSet.getString("address");
                     user.password = resultSet.getString("password");
+                    user.name = resultSet.getString("name");
                 }
 
                 stml.close();
@@ -104,10 +102,11 @@ public class LoginPage extends JDialog
         User user = loginPage.user;
         if(user != null)
         {
+            JOptionPane.showMessageDialog(null,
+                    "Successful Authentication of :" +user.name,
+                    JOptionPane.ERROR_MESSAGE);
             System.out.println("Successful Authentication of : " +user.name);
             System.out.println("            Email: " + user.email);
-            System.out.println("            Phone: " + user.phone);
-            System.out.println("            Address: " + user.address);
         }
         else
             System.out.println("Authentication cancelled!");
