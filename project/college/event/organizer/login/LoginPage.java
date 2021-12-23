@@ -102,9 +102,9 @@ public class LoginPage extends JDialog
         User user = loginPage.user;
         if(user != null)
         {
-            JOptionPane.showMessageDialog(null,
-                    "Successful Authentication of :" +user.name,
-                    JOptionPane.ERROR_MESSAGE);
+           // JOptionPane.showMessageDialog(null,
+                   // "Successful Authentication of :" +user.name,
+                    //JOptionPane.ERROR_MESSAGE);
             System.out.println("Successful Authentication of : " +user.name);
             System.out.println("            Email: " + user.email);
         }
