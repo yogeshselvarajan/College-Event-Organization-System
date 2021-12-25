@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 
 public class FineArtsReg
@@ -243,11 +244,20 @@ public class FineArtsReg
             try
             {
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdb", "root", "root");
-
-                String query = "INSERT INTO finearts values('" + fevent_name + "','" + fevent_description + "','" + fstart_time + "','" +
-                        fduration + "','" + start_date + "','" + event_type + "','" + fcategory + "','" + number_of_participants + "','" + fevent_id + "','" + fcollege_id + "','" + femail_id + "')";
-                Statement sta = connection.createStatement();
-                int x = sta.executeUpdate(query);
+                PreparedStatement pst;
+                pst = connection.prepareStatement("insert into finearts(event_name,description,start_time,duration,start_date,event_type,category,number_of_participants,event_id,college_id,email_id)values(?,?,?,?,?,?,?,?,?,?,?)");
+                pst.setString(1,fevent_name);
+                pst.setString(2,fevent_description);
+                pst.setString(3,fstart_time);
+                pst.setString(4,fduration);
+                pst.setString(5,start_date);
+                pst.setString(6,event_type);
+                pst.setString(7,fcategory);
+                pst.setString(8,number_of_participants);
+                pst.setString(9,fevent_id);
+                pst.setString(10,fcollege_id);
+                pst.setString(11,femail_id);
+                pst.executeUpdate();
                 JOptionPane.showMessageDialog(submit,
                             "The finearts event has been successfully scheduled !");
                 connection.close();
@@ -256,7 +266,6 @@ public class FineArtsReg
             {
                 exception.printStackTrace();
             }
-
         });
 
         /**  Frame Properties Declarations  */
