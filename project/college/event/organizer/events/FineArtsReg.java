@@ -241,7 +241,8 @@ public class FineArtsReg
             String fevent_id = meeting_id_field.getText();
             String fcollege_id = id.getText();
             String femail_id = email.getText();
-            try {
+            try
+            {
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdb", "root", "root");
                 PreparedStatement pst;
                 pst = connection.prepareStatement("insert into finearts(event_name,description,start_time,duration,start_date,event_type,category,number_of_participants,event_id,college_id,email_id)values(?,?,?,?,?,?,?,?,?,?,?)");
@@ -260,7 +261,9 @@ public class FineArtsReg
                 JOptionPane.showMessageDialog(submit,
                             "The finearts event has been successfully scheduled !");
                 connection.close();
-            } catch (Exception exception) {
+            }
+            catch (Exception exception)
+            {
                 exception.printStackTrace();
             }
         });
