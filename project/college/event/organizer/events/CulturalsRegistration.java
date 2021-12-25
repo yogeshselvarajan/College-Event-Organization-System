@@ -81,7 +81,7 @@ public class CulturalsRegistration
         college_name_field.setBounds(400,210,250,25);
         f.add(college_name_field);
 
-        /** "Contact Number" Label and TextField Definition */
+         /** "Contact Number" Label and TextField Definition */
         contact_num = new JLabel("Contact Number ");
         contact_num.setBounds(250,250,150,25);
         contact_num.setFont(new Font("Calibri", Font.ITALIC, 17));

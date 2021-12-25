@@ -8,7 +8,7 @@ public class MeetingRegistration
 {
     public MeetingRegistration()
     {
-        // Creating the Frame and then setting the Title
+         // Creating the Frame and then setting the Title
         JFrame f =new JFrame("SCHEDULE A MEETING FORM");
         JLabel title = new JLabel("SCHEDULE A MEETING",JLabel.CENTER);
         title.setBounds(500,05,400,25);

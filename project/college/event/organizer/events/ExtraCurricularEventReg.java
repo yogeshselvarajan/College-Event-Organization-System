@@ -14,7 +14,7 @@ public class ExtraCurricularEventReg
         title.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
         f.add(title);
         f.setBackground(Color.cyan);
-        f.setForeground(Color.black);
+         f.setForeground(Color.black);
 
         /** Declaring the initial variables of the type JLabel for all the necessary labels */
         JLabel event_name,event_description,event_type,start_time;
