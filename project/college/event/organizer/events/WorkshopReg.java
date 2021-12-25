@@ -2,9 +2,7 @@
 
 import javax.swing.*;
 import java.awt.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
+import java.sql.*;
 
  public class WorkshopReg
 {
@@ -28,7 +26,6 @@ import java.sql.Statement;
         TextArea w_description1, w_eligibility1;
         JComboBox w_dept1;
         JRadioButton w_mode1, w_mode2;
-        ButtonGroup mode;
 
         //Creating name part
         w_name = new JLabel("Workshop Title");
@@ -138,7 +135,7 @@ import java.sql.Statement;
         end_day.setBounds(600, 350, 50, 25);
 
         end_month = new Choice();
-        end_month.add("Janauary");end_month.add("February");end_month.add("March");end_month.add("April");end_month.add("May");
+        end_month.add("January");end_month.add("February");end_month.add("March");end_month.add("April");end_month.add("May");
         end_month.add("June");end_month.add("July");end_month.add("August");end_month.add("September");
         end_month.add("October");end_month.add("November");end_month.add("December");
         end_month.setBounds(665,350,80,25);
@@ -217,26 +214,24 @@ import java.sql.Statement;
         f.add(w_eligibility1);
 
         //Creating mode of Workshop part
+
         w_mode = new JLabel("Mode of Workshop");
         w_mode.setFont(new Font("Calibri", Font.ITALIC, 22));
         w_mode.setBounds(250, 655, 200, 25);
 
-        w_mode1 = new JRadioButton("On-site");
-        w_mode2 = new JRadioButton("Virtual");
-        mode = new ButtonGroup();
-        w_mode1.setBounds(600, 655, 100, 25);
-        w_mode2.setBounds(700, 655, 100, 25);
-        mode.add(w_mode1);
-        mode.add(w_mode2);
-        f.add(w_mode1);
-        f.add(w_mode2);
+        CheckboxGroup cbg=new CheckboxGroup();
+        Checkbox ck1=new Checkbox("On-Site",false,cbg);
+        ck1.setBounds(600, 655, 100, 25);
+        Checkbox ck2=new Checkbox("Virtual",false,cbg);
+        ck2.setBounds(700, 655, 100, 25);
+        f.add(ck2);
+        f.add(ck1);
         f.add(w_mode);
 
         //Creating buttons(Schedule event and reset)
         schedule = new JButton("Schedule Event");
-        schedule.setBounds(450, 720, 200, 50);
+        schedule.setBounds(500, 690, 200, 50);
         schedule.addActionListener(e -> {
-
 
             String workshop_title = w_name1.getText();
             String description = w_description1.getText();
@@ -252,27 +247,30 @@ import java.sql.Statement;
                     end_year.getSelectedItem().toString();
             String conducted_for = w_year1.getSelectedItem().toString();
             String department = w_dept1.getSelectedItem().toString();
-            String mode_of_workshop = mode.getSelection().toString();
+            String mode_of_workshop = cbg.getSelectedCheckbox().toString();
             String eligibility_criteria = w_eligibility1.getText();
             try {
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_db", "root", "root");
-
-                String query = "INSERT INTO workshop values('" + workshop_title + "','" + description + "','" + conducted_by + "','" +
-                        duration + "','" + start_date + "','" + end_date + "','" + department + "','" + slots_allocated + "','" + conducted_for + "','" + eligibility_criteria + "','" + mode_of_workshop + "')";
-                Statement sta = connection.createStatement();
-                int x = sta.executeUpdate(query);
-                if (x == 0) {
-                    JOptionPane.showMessageDialog(schedule, "An account with this details already exists !" +
-                            "Sign in instead ! You will be  now redirected to Login Page ...");
-                } else {
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdb", "root", "root");
+                PreparedStatement pst;
+                pst = connection.prepareStatement("insert into workshop(workshop_title,description,conducted_by,duration,start_date,end_date,department,slots_allocated,conducted_for,eligibility_criteria,mode_of_workshop)values(?,?,?,?,?,?,?,?,?,?,?)");
+                pst.setString(1,workshop_title);
+                pst.setString(2,description);
+                pst.setString(3,conducted_by);
+                pst.setString(4,duration);
+                pst.setString(5,start_date);
+                pst.setString(6,end_date);
+                pst.setString(7,department);
+                pst.setString(8,slots_allocated);
+                pst.setString(9,conducted_for);
+                pst.setString(10,eligibility_criteria);
+                pst.setString(11,mode_of_workshop);
+                pst.executeUpdate();
                     JOptionPane.showMessageDialog(schedule,
                             "The workshop has been successfully scheduled !");
-                }
                 connection.close();
-            } catch (Exception exception) {
+            }catch (SQLException exception) {
                 exception.printStackTrace();
             }
-
         });
 
         f.add(schedule);

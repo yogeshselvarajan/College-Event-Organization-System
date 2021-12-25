@@ -4,9 +4,7 @@ import project.college.event.organizer.login.RedirectToLogin;
 
 import javax.swing.*;
 import java.awt.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Objects;
 
 public class CulturalsRegistration
@@ -185,21 +183,22 @@ public class CulturalsRegistration
                 Event_Choosen += ck12.getLabel() + ",";
 
             try {
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdb", "root", "localhost");
-
-                String query = "INSERT INTO culturals values('" + Name + "','" + Department + "','" + Year_Section + "','" +
-                        Age + "','" + College_Name + "','" + Contact_Number + "','" + Name_of_Faculty + "','" + Email + "','" + Event_Choosen + "')";
-
-                Statement sta = connection.createStatement();
-                int x = sta.executeUpdate(query);
-                if (x == 0) {
-                    JOptionPane.showMessageDialog(submit, "An Error Occurred ! Retry again !");
-                } else {
-                    JOptionPane.showMessageDialog(submit,
-                            "You have been successfully registered for the Cultural Programme...  ");
-                }
-                connection.close();
-            } catch (Exception exception) {
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdb", "root", "root");
+                PreparedStatement pst;
+                pst = conn.prepareStatement("insert into culturals(StudentName,Department,Year_Section,Age,CollegeName,ContactNumber,NameofFaculty,EmailID,EventsRegistered)values(?,?,?,?,?,?,?,?,?)");
+                pst.setString(1,Name);
+                pst.setString(2,Department);
+                pst.setString(3,Year_Section);
+                pst.setString(4,Age);
+                pst.setString(5,College_Name);
+                pst.setString(6,Contact_Number);
+                pst.setString(7,Name_of_Faculty);
+                pst.setString(8,Email);
+                pst.setString(9,Event_Choosen);
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(submit,"You have been successfully registered for the Cultural Programme...  !!");
+                conn.close();
+            } catch (SQLException exception) {
                 exception.printStackTrace();
             }
         });

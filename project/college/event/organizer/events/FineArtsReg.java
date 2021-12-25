@@ -241,7 +241,7 @@ public class FineArtsReg
             String fcollege_id = id.getText();
             String femail_id = email.getText();
             try {
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_db", "root", "root");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdb", "root", "root");
 
                 String query = "INSERT INTO finearts values('" + fevent_name + "','" + fevent_description + "','" + fstart_time + "','" +
                         fduration + "','" + start_date + "','" + event_type + "','" + fcategory + "','" + number_of_participants + "','" + fevent_id + "','" + fcollege_id + "','" + femail_id + "')";

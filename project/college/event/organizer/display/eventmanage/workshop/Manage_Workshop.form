@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="project.college.event.organizer.display.eventmanage.workshop.Manage_Workshop">
+  <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="894" height="589"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="188be" layout-manager="GridLayoutManager" row-count="6" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-10039894"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <hspacer id="bc8e9">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+          <scrollpane id="58abb">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-15012234"/>
+            </properties>
+            <border type="etched" title="Displaying Records from Database " title-justification="2">
+              <font name="Segoe Print" size="16" style="1"/>
+              <title-color color="-5103070"/>
+            </border>
+            <children>
+              <component id="d9073" class="javax.swing.JTable" binding="TableWork">
+                <constraints/>
+                <properties>
+                  <background color="-65281"/>
+                  <font name="Segoe Print" size="14" style="1"/>
+                  <preferredScrollableViewportSize width="600" height="200"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+          <grid id="5afa0" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <opaque value="false"/>
+            </properties>
+            <border type="etched" title="Options">
+              <font name="Segoe Print" size="16" style="1"/>
+              <title-color color="-5103070"/>
+            </border>
+            <children>
+              <component id="90a1a" class="javax.swing.JButton" binding="btnDelete">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="1" use-parent-layout="false">
+                    <preferred-size width="237" height="30"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-5103070"/>
+                  <font name="Segoe Print" size="16" style="1"/>
+                  <foreground color="-1"/>
+                  <icon value="project/college/event/organizer/delete.png"/>
+                  <text value="Delete"/>
+                </properties>
+              </component>
+              <component id="57fc1" class="javax.swing.JButton" binding="btnExit">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="1" use-parent-layout="false">
+                    <preferred-size width="237" height="30"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16744320"/>
+                  <font name="Segoe Print" size="16" style="1"/>
+                  <foreground color="-1"/>
+                  <icon value="project/college/event/organizer/exit.png"/>
+                  <text value="Exit"/>
+                </properties>
+              </component>
+              <grid id="8b837" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="200" height="24"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <opaque value="false"/>
+                </properties>
+                <border type="etched" title="Search">
+                  <font name="Segoe Print" size="16" style="1"/>
+                  <title-color color="-5103070"/>
+                </border>
+                <children>
+                  <component id="63b18" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Segoe Print" size="14" style="1"/>
+                      <labelFor value="9ec3c"/>
+                      <text value="User ID:"/>
+                    </properties>
+                  </component>
+                  <component id="e94df" class="javax.swing.JTextField" binding="tfUserID">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font name="Segoe Print" size="14" style="1"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="1b583" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="200" height="24"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <opaque value="false"/>
+                </properties>
+                <border type="etched" title="Found Result:">
+                  <font name="Segoe Print" size="16" style="1"/>
+                  <title-color color="-5103070"/>
+                </border>
+                <children>
+                  <component id="b606b" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Segoe Print" size="14" style="1"/>
+                      <labelFor value="9ec3c"/>
+                      <text value="Name :"/>
+                    </properties>
+                  </component>
+                  <component id="15073" class="javax.swing.JTextField" binding="NameSearch">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font name="Segoe Print" size="14" style="1"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

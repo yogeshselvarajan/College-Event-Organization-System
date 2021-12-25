@@ -14,6 +14,8 @@ public class LoginPage extends JDialog
     private JButton btnOK;
     private JButton btnCancel;
     private JPanel loginPanel;
+    private JButton registerButton;
+    private JButton forgetPasswordButton;
 
     public LoginPage(JFrame parent)
     {
@@ -23,7 +25,8 @@ public class LoginPage extends JDialog
         setMinimumSize(new Dimension(450,474));
         setModal(true);
         setLocationRelativeTo(parent);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
+
         btnOK.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -34,6 +37,7 @@ public class LoginPage extends JDialog
 
                 if(user != null)
                     dispose();
+                    // Checking Blank Fields
                 else if (email.trim().equals("") || password.trim().equals(""))
                     JOptionPane.showMessageDialog(null, "One Or More Fields Are Empty", "Empty Fields", 2);
                 else
@@ -45,22 +49,25 @@ public class LoginPage extends JDialog
                 }
             }
         });
+
         btnCancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-
             }
         });
 
+
         setVisible(true);
+
+
     }
 
     public User user;
     private User getAuthenticatedUser(String email, String password) {
         User user = null;
 
-        final String DB_URL = "jdbc:mysql://localhost:3306/project_db";
+        final String DB_URL = "jdbc:mysql://localhost:3306/projectdb";
         final String USERNAME = "root";
         final String PASSWORD = "root";
 
@@ -89,7 +96,7 @@ public class LoginPage extends JDialog
                 stml.close();
                 conn.close();
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return user;
@@ -102,6 +109,6 @@ public class LoginPage extends JDialog
         if(user != null)
             JOptionPane.showMessageDialog(null, "You have successfully logged in");
         else
-        JOptionPane.showMessageDialog(null, "Authentication cancelled!","Login Failed",ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Authentication cancelled!","Login Failed",ERROR_MESSAGE);
     }
 }
