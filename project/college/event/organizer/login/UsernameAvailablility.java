@@ -112,7 +112,7 @@ public class UsernameAvailablility
         });
 
         JLabel label = new JLabel();
-        label.setIcon(new ImageIcon("C:\\Users\\vikaa\\IdeaProjects\\College-Event-Organization-System\\project\\college\\event\\organizer\\wp7488244.png"));
+        //label.setIcon(new ImageIcon("C:\\Users\\vikaa\\IdeaProjects\\College-Event-Organization-System\\project\\college\\event\\organizer\\wp7488244.png"));
         f.add(label);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setSize(1600, 800);

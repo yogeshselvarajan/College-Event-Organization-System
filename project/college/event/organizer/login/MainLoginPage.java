@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class Login extends JFrame {
+public class MainLoginPage extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JTextField textField;
@@ -33,7 +33,7 @@ public class Login extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Login frame = new Login();
+                    MainLoginPage frame = new MainLoginPage();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -45,7 +45,7 @@ public class Login extends JFrame {
     /**
      * Create the frame.
      */
-    public Login() {
+    public MainLoginPage() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1100,600);
         setResizable(false);
@@ -104,7 +104,8 @@ public class Login extends JFrame {
                     st.setString(2, password);
                     ResultSet rs = st.executeQuery();
                     if (rs.next()) {
-                        dispose();                        Home ah = new Home(userName);
+                        dispose();
+                        UserDashBoard ah = new UserDashBoard(userName);
                         ah.setTitle("Welcome");
                         ah.setVisible(true);
                         JOptionPane.showMessageDialog(btnNewButton, "You have successfully logged in");

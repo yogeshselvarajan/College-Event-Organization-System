@@ -22,7 +22,7 @@ public class RedirectToLogin
             {
                 //Calling Login Page again
                 f.dispose();
-                LoginPageDesign.main();
+                MainLoginPage.main(null);
             });
             f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             f.setSize(1600,800);

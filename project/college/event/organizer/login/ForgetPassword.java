@@ -1,7 +1,5 @@
 package project.college.event.organizer.login;
 
-import project.college.event.organizer.display.usersmanage.Admin_Manage_Users;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -67,7 +65,7 @@ public class ForgetPassword extends JFrame {
                      pst.executeUpdate();
                      JOptionPane.showMessageDialog(null,"Password Reset Successfully !!");
                      dispose();
-                        Login ob = new Login();
+                        MainLoginPage ob = new MainLoginPage();
                         ob.main(null);
                  } catch(SQLException throwables)
                  {

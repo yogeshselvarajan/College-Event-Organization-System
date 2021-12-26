@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
-public class Home extends JFrame {
+public class UserDashBoard extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
@@ -25,7 +25,7 @@ public class Home extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Home frame = new Home();
+                    UserDashBoard frame = new UserDashBoard();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -34,14 +34,14 @@ public class Home extends JFrame {
         });
     }
 
-    public Home() {
+    public UserDashBoard() {
 
     }
 
     /**
      * Create the frame.
      */
-    public Home(String userSes) {
+    public UserDashBoard(String userSes) {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(450, 190, 1014, 597);
@@ -60,12 +60,12 @@ public class Home extends JFrame {
                 // JOptionPane.setRootFrame(null);
                 if (a == JOptionPane.YES_OPTION) {
                     dispose();
-                    Login obj = new Login();
+                    MainLoginPage obj = new MainLoginPage();
                     obj.setTitle("Student-Login");
                     obj.setVisible(true);
                 }
                 dispose();
-                Login obj = new Login();
+                MainLoginPage obj = new MainLoginPage();
 
                 obj.setTitle("Student-Login");
                 obj.setVisible(true);
