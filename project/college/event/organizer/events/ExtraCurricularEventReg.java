@@ -2,6 +2,9 @@ package project.college.event.organizer.events;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
 public class ExtraCurricularEventReg
 {
@@ -202,14 +205,57 @@ public class ExtraCurricularEventReg
         /** Submit Button Declaration */
         JButton submit = new JButton("Schedule Event");
         submit.setBounds(650,670,170,30);
+
+
+        submit.addActionListener(e -> {
+
+
+            String event_title = event_name_field.getText();
+            String description = eventdescrip.getText();
+            String e_duration = duration_field.getText() + " " +
+                    dur.getSelectedItem().toString();
+            String e_start_time = HH.getSelectedItem().toString() + "-" +
+                    MM.getSelectedItem().toString() + "-" +
+                    AM_PM.getSelectedItem().toString();
+            String e_start_date = start_Date.getSelectedItem().toString()+
+                    start_Month.getSelectedItem().toString() +
+                    start_Year.getSelectedItem().toString();
+            String e_options = bg.getSelection().getActionCommand();
+            String p_field = participants_field.getText();
+            String event_id = meeting_id_field.getText();
+            String c_id = id.getText();
+            String e_id = email.getText();
+
+            try
+            {
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_db", "root", "root");
+
+                String query = "INSERT INTO workshop values('" + event_title + "','" + description + "','" + e_start_time + "','" +
+                          e_duration + "','" + e_start_date + "','" + e_options + "','" + p_field + "','" + event_id + "','"  + c_id + "','" + e_id + "')";
+                Statement sta = connection.createStatement();
+                int x = sta.executeUpdate(query);
+                if (x == 0) {
+                    JOptionPane.showMessageDialog(submit, "An account with this details already exists !" +
+                            "Sign in instead ! You will be  now redirected to Login Page ...");
+                } else {
+                    JOptionPane.showMessageDialog(submit, "The workshop has been successfully scheduled !");
+                }
+                connection.close();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+
+        });
+
         f.add(submit);
 
-        /**  Frame Properties Declarations  */
+
+    /**  Frame Properties Declarations  */
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setSize(1600,775);
         f.setLayout(null);
         f.setVisible(true);
-    }
+   }
     public  static void main(String argv[])
     {
         new ExtraCurricularEventReg();
