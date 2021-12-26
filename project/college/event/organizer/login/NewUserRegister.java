@@ -54,23 +54,6 @@ public class NewUserRegister
         answer1.setBounds(1040,440,300,30);
         f.add(answer1);
 
-        question_2 = new JLabel("Security Question - 2 : ");
-        question_2.setBounds(400,470,200,80);
-        question_2.setFont(new Font("Calibri", Font.ITALIC, 20));
-        String[] question_set_2 = {"Please Select",
-                                   "What is your favourite movie ?",
-                                   "What was your child-hood nickname ?",
-                                   "What city or town was your first job in ?",
-                                   "What is the name of the first school you attended ?",
-                                   "What is the name of your favourite childhood friend ?"
-                                  };
-        JComboBox qno2 = new JComboBox(question_set_2);
-        qno2.setBounds(600,490,400,30);
-        f.add(qno2);
-        JTextField answer2 = new JTextField();
-        answer2.setBounds(1040,490,300,30);
-        f.add(answer2);
-
         college_id = new JLabel("College ID :");
         college_id.setBounds(400,520,120,80);
         college_id.setFont(new Font("Calibri", Font.ITALIC, 24));
@@ -90,7 +73,7 @@ public class NewUserRegister
 
         /** ADDING COMPONENTS INTO THE FRAME CREATED */
         f.add(name);f.add(mobile);f.add(email);f.add(address);
-        f.add(question_1);f.add(question_2);f.add(college_id);f.add(course);
+        f.add(question_1);f.add(college_id);f.add(course);
         f.add(_class);f.add(section);
         /************** END OF THE LABEL PART **********************/
 
@@ -185,7 +168,6 @@ public class NewUserRegister
             String emailID = email1.getText();
             String Address = address1.getText();
             String Answer1 = answer1.getText();
-            String Answer2 = answer2.getText();
             String CollegeID = college_id1.getText();
             String Section = cbg.getSelectedCheckbox().getLabel();
             int len = Mobile.length();
@@ -194,6 +176,7 @@ public class NewUserRegister
                           + birthday_Month.getSelectedItem().toString() + "-"
                           + birthday_Year.getSelectedItem().toString();
             String Department = department.getSelectedItem().toString();
+            String SecurityQuestion = qno1.getSelectedItem().toString();
 
             msg += " \n";
 
@@ -205,7 +188,7 @@ public class NewUserRegister
                         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdb", "root", "root");
 
                         String query = "INSERT INTO students values('" + Name + "','" + Mobile + "','" + emailID + "','" +
-                                Address + "','" + Answer1 + "','" + Answer2 + "','" + CollegeID + "','" + BDay + "','" + Department + "','" + Section + "')";
+                                Address + "','" + SecurityQuestion + "','" + Answer1 + "','" + CollegeID + "','" + BDay + "','" + Department + "','" + Section + "')";
 
                         Statement sta = connection.createStatement();
                         int x = sta.executeUpdate(query);
@@ -235,7 +218,6 @@ public class NewUserRegister
             email1.setText("");
             address1.setText("");
             qno1.setSelectedItem("Please Select");
-            qno2.setSelectedItem("Please Select");
             college_id1.setText("");
             department.setSelectedItem("Select your Course");
         });

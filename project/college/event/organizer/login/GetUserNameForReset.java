@@ -18,7 +18,7 @@ import javax.swing.*;
 
         JLabel username;
 
-        username = new JLabel("Username :");
+        username = new JLabel("Enter Email ID :");
         username.setBounds(600,133,130,30);
         username.setFont(new Font("Calibri", Font.ITALIC, 24));
 
@@ -49,7 +49,7 @@ import javax.swing.*;
             try {
                 Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
                 PreparedStatement preparedStatement = (PreparedStatement) connection
-                        .prepareStatement("Select User_Name from userdb where User_name=? ");
+                        .prepareStatement("Select Email from userdb where Email=? ");
                 preparedStatement.setString(1, get_username);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {

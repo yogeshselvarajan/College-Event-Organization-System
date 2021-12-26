@@ -53,7 +53,7 @@ public class LoginPageDesign  extends JFrame
         container.add(forgetPassword);
         container.add(registerLabel);
         setLayout(new BorderLayout());
-        JLabel background = new JLabel(new ImageIcon("3d dark.png "));
+        JLabel background = new JLabel(new ImageIcon("project/college/event/organizer/2805308.png"));
         add(background);
         background.setLayout(new FlowLayout());
         registerButton.addActionListener(e->
@@ -83,7 +83,6 @@ public class LoginPageDesign  extends JFrame
                     Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
                     PreparedStatement preparedStatement = (PreparedStatement) connection
                             .prepareStatement("Select User_Name, Password from userdb where User_name=? and Password=?");
-                    //PreparedStatement preparedStatement = connection.prepareStatement("select * from userdb");
                     preparedStatement.setString(1, get_username);
                     preparedStatement.setString(2, get_password);
                     ResultSet resultSet = preparedStatement.executeQuery();

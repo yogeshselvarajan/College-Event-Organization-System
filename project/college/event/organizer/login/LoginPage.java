@@ -16,6 +16,9 @@ public class LoginPage extends JDialog
     private JPanel loginPanel;
     private JButton registerButton;
     private JButton forgetPasswordButton;
+    private JPanel btnForgetPassword;
+    private JButton createNewAccountButton;
+    private JLabel forgetPass;
 
     public LoginPage(JFrame parent)
     {
@@ -61,6 +64,18 @@ public class LoginPage extends JDialog
         setVisible(true);
 
 
+        forgetPasswordButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GetUserNameForReset getusername = new GetUserNameForReset();
+            }
+        });
+        createNewAccountButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                UsernameAvailablility obj = new UsernameAvailablility();
+            }
+        });
     }
 
     public User user;
