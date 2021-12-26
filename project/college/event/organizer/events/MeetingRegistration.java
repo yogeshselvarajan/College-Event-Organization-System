@@ -2,6 +2,9 @@
 package project.college.event.organizer.events;
 
 import java.awt.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import javax.swing.*;
 
 public class MeetingRegistration
@@ -222,6 +225,51 @@ public class MeetingRegistration
         /** Submit Button Declaration */
         JButton submit = new JButton("Schedule Meeting");
         submit.setBounds(650,670,170,30);
+
+        submit.addActionListener(e -> {
+
+
+            String meeting_title = meeting_name_field.getText();
+            String description = meetingdescrip.getText();
+            String m_duration = duration_field.getText() + " " +
+                    dur.getSelectedItem().toString();
+            String m_start_time = HH.getSelectedItem().toString() + "-" +
+                    MM.getSelectedItem().toString() + "-" +
+                    AM_PM.getSelectedItem().toString();
+            String m_type = meeting_type_field.getText();
+            String m_start_date = start_Date.getSelectedItem().toString()+
+                    start_Month.getSelectedItem().toString() +
+                    start_Year.getSelectedItem().toString();
+            String m_options = bg.getSelection().getActionCommand();
+            String p_field = participants_field.getText();
+            String m_id = meeting_id_field.getText();
+            String pass_field = password_field.getText();
+            String c_id = id.getText();
+            String e_id = email.getText();
+
+            try
+            {
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_db", "root", "root");
+
+                String query = "INSERT INTO workshop values('" + meeting_title + "','" + description + "','" + m_start_time + "','" +
+                        m_type + "','" + m_duration + "','" + m_start_date + "','" + m_options + "','" + p_field + "','" + m_id + "','" + pass_field + "','" + c_id + "','" + e_id + "')";
+                Statement sta = connection.createStatement();
+                int x = sta.executeUpdate(query);
+                if (x == 0) {
+                    JOptionPane.showMessageDialog(submit, "An account with this details already exists !" +
+                            "Sign in instead ! You will be  now redirected to Login Page ...");
+                } else {
+                    JOptionPane.showMessageDialog(submit, "The workshop has been successfully scheduled !");
+                }
+                connection.close();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+
+        });
+
+
+
         f.add(submit);
 
         /**  Frame Properties Declarations  */
@@ -250,3 +298,5 @@ public class MeetingRegistration
     }
 
 }
+
+
