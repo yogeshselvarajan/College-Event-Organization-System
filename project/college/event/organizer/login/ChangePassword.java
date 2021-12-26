@@ -68,7 +68,7 @@ public class ChangePassword extends JFrame {
                             "root", "root");
 
                     PreparedStatement st = (PreparedStatement) con
-                            .prepareStatement("Update student set password=? where name=?");
+                            .prepareStatement("Update userdb set Password=? where Name=?");
 
                     st.setString(1, pstr);
                     st.setString(2, name);

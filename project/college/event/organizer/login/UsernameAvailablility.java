@@ -44,6 +44,14 @@ public class UsernameAvailablility
         passwordField1.setBounds(600,270,200,25);
         f.add(passwordField1);
 
+        JLabel Name = new JLabel("Name :  ");
+        Name.setBounds(400,300,200,80);
+        Name.setFont(new Font("Calibri", Font.ITALIC, 22));
+        f.add(Name);
+        JTextField NameField1 = new JTextField();
+        NameField1.setBounds(600,320,200,25);
+        f.add(NameField1);
+
         JButton Check = new JButton("Check Availability");
         Check.setBounds(850,165,170,25);
         f.add(Check);
@@ -56,12 +64,12 @@ public class UsernameAvailablility
             try {
                 Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
                 PreparedStatement preparedStatement = (PreparedStatement) connection
-                        .prepareStatement("Select User_Name from userdb where User_name=?");
+                        .prepareStatement("Select Email from userdb where Email=?");
                 //PreparedStatement preparedStatement = connection.prepareStatement("select * from userdb");
                 preparedStatement.setString(1, userName);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
-                    JOptionPane.showMessageDialog(null, "This Username is Already Taken, Choose Another One", "Username Failed", 2);}
+                    JOptionPane.showMessageDialog(null, "This Username(Email) is Already Registered with us ! , Choose Another One", "Username Failed", 2);}
                 else
                     JOptionPane.showMessageDialog(null, "Username Available... Create a password for your account","Username Available",1);
             } catch (SQLException throwables) {
@@ -70,38 +78,33 @@ public class UsernameAvailablility
         });
 
         JButton Register = new JButton("Proceed to Registration");
-        Register.setBounds(500,350,200,25);
+        Register.setBounds(500,390,200,25);
         f.add(Register);
         Register.addActionListener(e ->
         {
-            String DB_URL = "jdbc:mysql://localhost:3306/projectdb";
-            String PASS = "root";
-            String USER = "root";
             String Username= username_field.getText();
             String passText = new String(passwordField.getPassword());
             String passText_confirm = new String(passwordField1.getPassword());
-            if(Username.trim().equals("") || passText.trim().equals("") || passText_confirm.trim().equals(""))
+            String NameField = NameField1.getText();
+            if(Username.trim().equals("") || passText.trim().equals("") || passText_confirm.trim().equals("") || NameField.trim().equals(""))
                 JOptionPane.showMessageDialog(null, "One Or More Fields Are Empty","Empty Fields",2);
             else if(!passText.equals(passText_confirm))
                 JOptionPane.showMessageDialog(null, "Password Doesn't Match","Confirm Password",2);
             else
             {
                 try {
-                    Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-                    String final_pass = passText_confirm;
-                    String query = "INSERT INTO userdb values('" + Username + "','" + final_pass + "')";
-
-                    Statement sta = conn.createStatement();
-                    int x = sta.executeUpdate(query);
-                    if (x == 0)
-                        JOptionPane.showMessageDialog(Register, "Error in storing at Database !");
-                    else
-                        JOptionPane.showMessageDialog(Register, "Your Basic Login Details are stored...");
-                    conn.close();
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdb", "root", "root");
+                    PreparedStatement pst;
+                    pst = connection.prepareStatement("insert into userdb(Email,Password,Name)values(?,?,?)");
+                    pst.setString(1,Username);
+                    pst.setString(2,passText);
+                    pst.setString(3,NameField);
+                    pst.executeUpdate();
+                    JOptionPane.showMessageDialog(Register, "Your Basic Login Details are stored...");
+                    connection.close();
 
                     // Calling The NewRegisterForm if it exists
                     NewUserRegister obj = new NewUserRegister();
-
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }

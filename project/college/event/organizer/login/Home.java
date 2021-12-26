@@ -53,7 +53,7 @@ public class Home extends JFrame {
         JButton btnNewButton = new JButton("Logout");
         btnNewButton.setForeground(new Color(0, 0, 0));
         btnNewButton.setBackground(UIManager.getColor("Button.disabledForeground"));
-        btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
+        btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int a = JOptionPane.showConfirmDialog(btnNewButton, "Are you sure?");
@@ -72,7 +72,21 @@ public class Home extends JFrame {
 
             }
         });
-        btnNewButton.setBounds(247, 118, 491, 114);
+
+        JButton btnRegisterEvents = new JButton("Register Events ");
+        btnRegisterEvents.setForeground(new Color(0, 0, 0));
+        btnRegisterEvents.setBackground(UIManager.getColor("Button.disabledForeground"));
+        btnRegisterEvents.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        btnRegisterEvents.addActionListener(e ->
+        {
+            dispose();
+            EventsRegister ob = new EventsRegister();
+            ob.main(null);
+
+        });
+        btnRegisterEvents.setBounds(400,300,200,30);
+        contentPane.add(btnRegisterEvents);
+        btnNewButton.setBounds(400, 118, 200, 30);
         contentPane.add(btnNewButton);
         JButton button = new JButton("Change-password\r\n");
         button.setBackground(UIManager.getColor("Button.disabledForeground"));
@@ -81,11 +95,10 @@ public class Home extends JFrame {
                 ChangePassword bo = new ChangePassword(userSes);
                 bo.setTitle("Change Password");
                 bo.setVisible(true);
-
             }
         });
         button.setFont(new Font("Tahoma", Font.PLAIN, 30));
-        button.setBounds(247, 320, 491, 114);
+        button.setBounds(270, 200, 400, 30);
         contentPane.add(button);
     }
 }

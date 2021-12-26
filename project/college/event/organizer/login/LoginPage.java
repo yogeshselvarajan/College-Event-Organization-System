@@ -60,20 +60,22 @@ public class LoginPage extends JDialog
             }
         });
 
-
         setVisible(true);
 
-
-        forgetPasswordButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                GetUserNameForReset getusername = new GetUserNameForReset();
-            }
-        });
         createNewAccountButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 UsernameAvailablility obj = new UsernameAvailablility();
+                obj.main();
+            }
+        });
+
+        forgetPasswordButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                ForgetPassword ob = new ForgetPassword();
+                ob.main(null);
             }
         });
     }

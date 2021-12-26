@@ -200,8 +200,8 @@ public class NewUserRegister
                         } else {
                             JOptionPane.showMessageDialog(submit,
                                     "Welcome, " + msg + "Your account is successfully created! You will be now redirected to Login Page ...");
-                            new RedirectToLogin();
-                            RedirectToLogin.main();
+                            Login object = new Login();
+                            object.main(null);
                         }
                         connection.close();
                     } catch (Exception exception) {

@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 
-public class ForgetPassword {
+public class ForgetPassword extends JFrame {
     private JTextField tfUserName;
     private JTextField tfQues_Sec;
     private JTextField tfAnswer;
@@ -23,28 +23,6 @@ public class ForgetPassword {
     final String PASSWORD = "root";
 
     public ForgetPassword() {
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String username = tfUserName.getText();
-                String password = String.valueOf(pfPassword.getPassword());
-                String securityQ = tfQues_Sec.getText();
-                String answer = tfAnswer.getText();
-                try {
-                    {
-                        Class.forName("com.mysql.jdbc.Driver");
-                        Connection conn = DriverManager.getConnection(DB_URL,USERNAME,PASSWORD);
-
-                        Statement st = conn.createStatement();
-                        //ResultSet rs = st.executeQuery("select * from students where Email ='"+ username +"' Security_Answer_1 ='"+"');
-                       // if(rs.next())
-
-                    }
-                } catch (ClassNotFoundException | SQLException Exception) {
-                   Exception.printStackTrace();
-                }
-            }
-        });
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -72,30 +50,31 @@ public class ForgetPassword {
         });
 
 
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String email = tfUserName.getText();
-                String NewPassword = String.valueOf(pfPassword.getPassword());
-                 if (NewPassword.trim().equals(""))
-                    JOptionPane.showMessageDialog(null, "Password Field is Empty ! ", "Empty Fields", 2);
-                else {
-                    try
-                     {
-                         Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
-                         PreparedStatement pst;
-                         pst = conn.prepareStatement("update userdb set Password=? where Email=?");
-                         pst.setString(1, NewPassword);
-                         pst.setString(2,email);
-                         pst.executeUpdate();
-                         JOptionPane.showMessageDialog(null,"Password Reset Successfully !!");
-                     } catch(SQLException throwables)
-                     {
-                         throwables.printStackTrace();
-                     }
+        saveButton.addActionListener(e ->
+        {
+            String email = tfUserName.getText();
+            String NewPassword = String.valueOf(pfPassword.getPassword());
+             if (NewPassword.trim().equals(""))
+                JOptionPane.showMessageDialog(null, "Password Field is Empty ! ", "Empty Fields", 2);
+            else {
+                try
+                 {
+                     Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
+                     PreparedStatement pst;
+                     pst = conn.prepareStatement("update userdb set Password=? where Email=?");
+                     pst.setString(1, NewPassword);
+                     pst.setString(2,email);
+                     pst.executeUpdate();
+                     JOptionPane.showMessageDialog(null,"Password Reset Successfully !!");
+                     dispose();
+                        Login ob = new Login();
+                        ob.main(null);
+                 } catch(SQLException throwables)
+                 {
+                     throwables.printStackTrace();
                  }
+             }
 
-            }
         });
         btnConfirm.addActionListener(new ActionListener() {
             @Override
@@ -137,27 +116,16 @@ public class ForgetPassword {
         return root;
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable()
-        {
-            @Override
-            public void run()
-            {
-                createGUI();
-            }
-        });
-    }
-
-    private static void createGUI()
+    public static void main(String[] args)
     {
-
-        ForgetPassword ui = new ForgetPassword();
-        JPanel root = ui.getRootPanel();
-        JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setContentPane(root);
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+            ForgetPassword ui = new ForgetPassword();
+            JPanel root = ui.getRootPanel();
+            JFrame frame = new JFrame();
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setContentPane(root);
+            frame.pack();
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
     }
+
 }

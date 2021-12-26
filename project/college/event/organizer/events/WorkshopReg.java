@@ -6,7 +6,7 @@ import java.sql.*;
 
 public class WorkshopReg
 {
-    WorkshopReg() {
+   public WorkshopReg() {
         //Creating Frame
         JFrame f = new JFrame();
         f.setTitle("Register for Workshop");

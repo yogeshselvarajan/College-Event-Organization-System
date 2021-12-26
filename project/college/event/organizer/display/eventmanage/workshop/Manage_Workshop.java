@@ -27,7 +27,7 @@ public class Manage_Workshop {
 
     ResultSet rs;
 
-    Manage_Workshop()
+    public Manage_Workshop()
     {
         createTable();
         show_user();

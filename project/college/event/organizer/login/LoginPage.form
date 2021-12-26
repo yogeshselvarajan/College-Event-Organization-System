@@ -121,7 +121,7 @@
           </component>
           <component id="22604" class="javax.swing.JButton" binding="btnCancel">
             <constraints>
-              <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <font name="Segoe Print" size="18" style="1"/>
@@ -152,9 +152,9 @@
               <text value="Create New Account "/>
             </properties>
           </component>
-          <component id="8f38" class="javax.swing.JLabel" binding="forgetPass">
+          <component id="d4ed3" class="javax.swing.JButton" binding="forgetPasswordButton" default-binding="true">
             <constraints>
-              <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <font name="Segoe Print" size="18" style="1"/>

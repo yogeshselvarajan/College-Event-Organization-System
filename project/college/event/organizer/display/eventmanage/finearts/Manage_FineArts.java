@@ -29,7 +29,7 @@ public class Manage_FineArts {
 
     ResultSet rs;
 
-    Manage_FineArts() {
+    public Manage_FineArts() {
         createTable();
         show_user();
         tfUserID.addKeyListener(new KeyAdapter() {

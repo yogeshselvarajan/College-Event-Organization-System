@@ -25,7 +25,7 @@ public class Manage_Culturals {
 
     ResultSet rs;
 
-    Manage_Culturals()
+    public Manage_Culturals()
     {
         createTable();
         show_user();
