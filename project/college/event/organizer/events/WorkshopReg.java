@@ -9,6 +9,7 @@ public class WorkshopReg
    public WorkshopReg() {
         //Creating Frame
         JFrame f = new JFrame();
+       f.getContentPane().setBackground(new Color(95,158,160));
         f.setTitle("Register for Workshop");
         f.setSize(1400, 850);
 

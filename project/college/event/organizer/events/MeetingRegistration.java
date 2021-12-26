@@ -13,6 +13,7 @@ public class MeetingRegistration
     {
          // Creating the Frame and then setting the Title
         JFrame f =new JFrame("SCHEDULE A MEETING FORM");
+        f.getContentPane().setBackground(new Color(95,158,160));
         JLabel title = new JLabel("SCHEDULE A MEETING",JLabel.CENTER);
         title.setBounds(500,05,400,25);
         title.setFont(new Font("Comic Sans MS", Font.BOLD, 20));

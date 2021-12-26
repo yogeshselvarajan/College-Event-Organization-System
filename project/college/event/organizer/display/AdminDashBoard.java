@@ -11,6 +11,7 @@ public class AdminDashBoard
     public AdminDashBoard()
     {
         JFrame f = new JFrame("Manage Admin");
+        f.getContentPane().setBackground(new Color(240,128,128));
         JLabel title = new JLabel("Welcome Admin :-) ", JLabel.CENTER);
         title.setBounds(350, 10, 600, 110);
         title.setFont(new Font("Comic Sans MS", Font.BOLD, 30));

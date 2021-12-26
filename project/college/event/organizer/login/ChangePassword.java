@@ -50,6 +50,7 @@ public class ChangePassword extends JFrame {
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
+        contentPane.setBackground((new Color(240,230,140)));
         contentPane.setLayout(null);
 
         textField = new JTextField();
@@ -59,6 +60,7 @@ public class ChangePassword extends JFrame {
         textField.setColumns(10);
 
         JButton btnSearch = new JButton("Enter");
+        btnSearch.setBackground((new Color(188,143,143)));
         btnSearch.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 

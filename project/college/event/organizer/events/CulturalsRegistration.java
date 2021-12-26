@@ -13,6 +13,7 @@ public class CulturalsRegistration
     {
         // Creating the Frame and then setting the Title
         JFrame f =new JFrame("SCHEDULE AN EVENT");
+        f.getContentPane().setBackground(new Color(95,158,160));
         JLabel title = new JLabel("CULTURALS FEST REGISTRATION FORM",JLabel.CENTER);
         title.setBounds(400,05,600,25);
         title.setFont(new Font("Comic Sans MS", Font.BOLD, 20));

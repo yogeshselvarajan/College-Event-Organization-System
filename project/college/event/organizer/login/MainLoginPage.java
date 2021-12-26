@@ -53,22 +53,24 @@ public class MainLoginPage extends JFrame {
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
+        contentPane.setBackground((new Color(26, 238, 118)));
 
-        JLabel lblNewLabel = new JLabel("Please Login");
+        JLabel lblNewLabel = new JLabel("Please Login To Proceed ");
         lblNewLabel.setForeground(Color.BLACK);
-        lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-        lblNewLabel.setBounds(423, 13, 273, 93);
+        lblNewLabel.setFont(new Font("Segoe Print", Font.BOLD, 32));
+        lblNewLabel.setBounds(423, 13, 500, 93);
+        lblNewLabel.setForeground(new Color(148,0,211));
         contentPane.add(lblNewLabel);
 
         textField = new JTextField();
-        textField.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        textField.setBounds(481, 170, 281, 68);
+        textField.setFont(new Font("Segoe Print", Font.BOLD, 20));
+        textField.setBounds(481, 170, 281, 40);
         contentPane.add(textField);
         textField.setColumns(10);
 
         passwordField = new JPasswordField();
-        passwordField.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        passwordField.setBounds(481, 286, 281, 68);
+        passwordField.setFont(new Font("Sogoe Print", Font.BOLD, 20));
+        passwordField.setBounds(481, 286, 281, 40);
         contentPane.add(passwordField);
 
         JLabel lblUsername = new JLabel("Email ID :");
@@ -76,6 +78,7 @@ public class MainLoginPage extends JFrame {
         lblUsername.setForeground(Color.BLACK);
         lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 25));
         lblUsername.setBounds(250, 166, 193, 52);
+        lblUsername.setForeground(new Color(178,34,34));
         contentPane.add(lblUsername);
 
         JLabel lblPassword = new JLabel("Password :");
@@ -83,10 +86,13 @@ public class MainLoginPage extends JFrame {
         lblPassword.setBackground(Color.CYAN);
         lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 25));
         lblPassword.setBounds(250, 286, 193, 52);
+        lblPassword.setForeground(new Color(178,34,34));
         contentPane.add(lblPassword);
 
         btnNewButton = new JButton("Login");
         btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 26));
+        btnNewButton.setForeground(new Color(174,34,34));
+        btnNewButton.setBackground(new Color(0,191,255));
         btnNewButton.setBounds(545, 392, 162, 73);
         btnNewButton.addActionListener(new ActionListener() {
 
@@ -125,7 +131,8 @@ public class MainLoginPage extends JFrame {
         btnForgetPassword = new JButton("Forget Password");
         btnForgetPassword.setFont(new Font("Tahoma", Font.PLAIN, 18));
         btnForgetPassword.setBounds(320, 392, 190, 73);
-        btnForgetPassword.setBackground(UIManager.getColor("Button.disabledForeground"));
+        btnForgetPassword.setForeground(new Color(174,34,34));
+        btnForgetPassword.setBackground(new Color(0,191,255));
         btnForgetPassword.addActionListener( e ->
             {
                 dispose();
@@ -134,10 +141,11 @@ public class MainLoginPage extends JFrame {
             });
         contentPane.add(btnForgetPassword);
 
-        JButton btnAdminLogin = new JButton("Admin ? Click me");
+        JButton btnAdminLogin = new JButton("Admin Login");
         btnAdminLogin.setFont(new Font("Tahoma", Font.PLAIN, 18));
         btnAdminLogin.setBounds(40, 392, 250, 73);
-        btnAdminLogin.setBackground(UIManager.getColor("Button.disabledForeground"));
+        btnAdminLogin.setForeground(new Color(174,34,34));
+        btnAdminLogin.setBackground(new Color(0,191,255));
         btnAdminLogin.addActionListener(e ->
         {
             String userName = textField.getText();
@@ -171,7 +179,8 @@ public class MainLoginPage extends JFrame {
         JButton btnRegister = new JButton("New Account");
         btnRegister.setFont(new Font("Tahoma", Font.PLAIN, 18));
         btnRegister.setBounds(750, 392, 250, 73);
-        btnRegister.setBackground(UIManager.getColor("Button.disabledForeground"));
+        btnRegister.setForeground(new Color(174,34,34));
+        btnRegister.setBackground(new Color(0,191,255));
         btnRegister.addActionListener(e ->
         {
             dispose();

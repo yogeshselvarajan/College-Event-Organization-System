@@ -50,14 +50,14 @@ public class UserDashBoard extends JFrame {
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
+        contentPane.setBackground((new Color(221,160,221)));
         JButton btnNewButton = new JButton("Logout");
         btnNewButton.setForeground(new Color(0, 0, 0));
-        btnNewButton.setBackground(UIManager.getColor("Button.disabledForeground"));
+        btnNewButton.setBackground((new Color(255,127,80)));
         btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int a = JOptionPane.showConfirmDialog(btnNewButton, "Are you sure?");
-                // JOptionPane.setRootFrame(null);
                 if (a == JOptionPane.YES_OPTION) {
                     dispose();
                     MainLoginPage obj = new MainLoginPage();
@@ -75,8 +75,8 @@ public class UserDashBoard extends JFrame {
 
         JButton btnRegisterEvents = new JButton("Register Events ");
         btnRegisterEvents.setForeground(new Color(0, 0, 0));
-        btnRegisterEvents.setBackground(UIManager.getColor("Button.disabledForeground"));
         btnRegisterEvents.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        btnRegisterEvents.setBackground((new Color(255,127,80)));
         btnRegisterEvents.addActionListener(e ->
         {
             dispose();
@@ -88,8 +88,8 @@ public class UserDashBoard extends JFrame {
         contentPane.add(btnRegisterEvents);
         btnNewButton.setBounds(400, 118, 200, 30);
         contentPane.add(btnNewButton);
-        JButton button = new JButton("Change-password\r\n");
-        button.setBackground(UIManager.getColor("Button.disabledForeground"));
+        JButton button = new JButton("Change password\r\n");
+        button.setBackground((new Color(255,127,80)));
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ChangePassword bo = new ChangePassword(userSes);
