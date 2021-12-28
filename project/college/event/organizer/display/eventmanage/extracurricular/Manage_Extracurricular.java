@@ -119,7 +119,7 @@ public class Manage_Extracurricular {
                         rs.getString("event_id"),
                         rs.getString("college_id"),
                         rs.getString("email_id"));
-                        ExtraList.add(extracurricular);
+                ExtraList.add(extracurricular);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -131,7 +131,7 @@ public class Manage_Extracurricular {
     {
         ArrayList<ExtraCurricularClass> list = ExtraList();
         DefaultTableModel model = (DefaultTableModel) TableExtra.getModel();
-        Object[] row  = new Object[12];
+        Object[] row  = new Object[11];
 
         for(int i=0 ; i<list.size() ; i++)
         {
@@ -154,7 +154,7 @@ public class Manage_Extracurricular {
         TableExtra.setModel(new DefaultTableModel(
                 null,
                 new String[]{"ID","Event Name", "Description", "Start Time", "Duration", "Start Date", "Event Options",
-                         "Number of Participants", "Event ID", "College ID", "Email ID"}
+                        "Number of Participants", "Event ID", "College ID", "Email ID"}
         ));
 
         TableColumnModel columns = TableExtra.getColumnModel();
@@ -172,7 +172,6 @@ public class Manage_Extracurricular {
         columns.getColumn(8).setCellRenderer(cellRenderer);
         columns.getColumn(9).setCellRenderer(cellRenderer);
         columns.getColumn(10).setCellRenderer(cellRenderer);
-        columns.getColumn(11).setCellRenderer(cellRenderer);
     }
     private JPanel getRootPanel()
     {

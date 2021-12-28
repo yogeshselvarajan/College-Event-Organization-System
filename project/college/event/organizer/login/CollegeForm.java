@@ -1,6 +1,7 @@
 package project.college.event.organizer.login;
 
 import java.awt.*;
+import java.sql.*;
 import javax.swing.*;
 
 public class CollegeForm
@@ -12,7 +13,7 @@ public class CollegeForm
         title.setBounds(500,10,400,110);
         title.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
         f.add(title);
-
+        f.getContentPane().setBackground(new Color(100,255,70));
         JLabel name,mobile,email,address,password,confirm,id,degree,org;
 
         name = new JLabel("College Name :");
@@ -101,10 +102,45 @@ public class CollegeForm
 
         JButton submit = new JButton("Submit");
         submit.setBounds(520,117,100,30);
+
         submit.addActionListener(e -> {
-            int input = JOptionPane.showConfirmDialog(null,
-                    "Are you sure to create a ID with the given details?", "Confirmation tab",JOptionPane.YES_NO_CANCEL_OPTION);
+
+
+            String c_name = name1.getText();
+            String e_mail = email1.getText();
+            String c_mobile = mobile1.getText();
+            String c_address = address1.getText();
+            String c_id = id1.getText();
+            String c_pass = password1.getText();
+            String cm_pass = confirm1.getText();
+            String c_degree = c.getSelectedItem().toString();
+            String c_orgainzation = cbg.getSelectedCheckbox().getLabel();
+
+            try
+            {
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdb", "root", "root");
+                PreparedStatement pst;
+                pst = connection.prepareStatement("insert into college(college_name,email_id,mobile,address,college_id,password,confirmed_password,degree,college_organization)values(?,?,?,?,?,?,?,?,?)");
+                pst.setString(1,c_name);
+                pst.setString(2,e_mail);
+                pst.setString(3,c_mobile);
+                pst.setString(4,c_address);
+                pst.setString(5,c_id);
+                pst.setString(6,c_pass);
+                pst.setString(7,cm_pass);
+                pst.setString(8,c_degree);
+                pst.setString(9,c_orgainzation);
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(submit,
+                        "The college account has been successfully created !");
+                connection.close();
+            }
+            catch (Exception exception)
+            {
+                exception.printStackTrace();
+            }
         });
+
         f.add(submit);
 
         JButton reset = new JButton("Reset");
@@ -136,4 +172,3 @@ public class CollegeForm
     }
 
 }
-

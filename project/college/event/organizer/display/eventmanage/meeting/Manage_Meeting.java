@@ -1,8 +1,6 @@
 package project.college.event.organizer.display.eventmanage.meeting;
 
 import net.proteanit.sql.DbUtils;
-import project.college.event.organizer.display.eventmanage.meeting.Manage_Meeting;
-import project.college.event.organizer.display.eventmanage.meeting.MeetingClass;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -22,7 +20,7 @@ public class Manage_Meeting {
     private JTextField tfUserID;
     private JTextField NameSearch;
 
-    final String DB_URL = "jdbc:mysql://localhost:3306/project_db";
+    final String DB_URL = "jdbc:mysql://localhost:3306/projectdb";
     final String USERNAME = "root";
     final String PASSWORD = "root";
 
@@ -101,7 +99,7 @@ public class Manage_Meeting {
         try {
             Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
 
-            String query = "SELECT * FROM meeting";
+            String query = "SELECT * FROM meetingdb";
             Statement sta = conn.createStatement();
             ResultSet rs = sta.executeQuery(query);
             MeetingClass meeting;
@@ -121,7 +119,7 @@ public class Manage_Meeting {
                         rs.getString("college_id"),
                         rs.getString("email_id"));
 
-                        meetingList.add(meeting);
+                meetingList.add(meeting);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -133,7 +131,7 @@ public class Manage_Meeting {
     {
         ArrayList<MeetingClass> list = meetingList();
         DefaultTableModel model = (DefaultTableModel) TableMeeting.getModel();
-        Object[] row  = new Object[12];
+        Object[] row  = new Object[13];
 
         for(int i=0 ; i<list.size() ; i++)
         {
@@ -178,7 +176,6 @@ public class Manage_Meeting {
         columns.getColumn(10).setCellRenderer(cellRenderer);
         columns.getColumn(11).setCellRenderer(cellRenderer);
         columns.getColumn(12).setCellRenderer(cellRenderer);
-        columns.getColumn(13).setCellRenderer(cellRenderer);
     }
     private JPanel getRootPanel()
     {
@@ -210,5 +207,4 @@ public class Manage_Meeting {
     }
 
 }
-
 

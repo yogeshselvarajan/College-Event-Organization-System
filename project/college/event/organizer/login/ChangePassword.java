@@ -10,19 +10,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 public class ChangePassword extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
-    private JTextField textField;
+    private JPasswordField textField;
     private JLabel lblEnterNewPassword;
 
     /**
@@ -53,7 +48,7 @@ public class ChangePassword extends JFrame {
         contentPane.setBackground((new Color(240,230,140)));
         contentPane.setLayout(null);
 
-        textField = new JTextField();
+        textField = new JPasswordField();
         textField.setFont(new Font("Tahoma", Font.PLAIN, 34));
         textField.setBounds(373, 35, 609, 67);
         contentPane.add(textField);
@@ -64,7 +59,7 @@ public class ChangePassword extends JFrame {
         btnSearch.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                String pstr = textField.getText();
+                String pstr = String.valueOf(textField.getPassword());
                 try {
                     Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdb",
                             "root", "root");

@@ -9,6 +9,7 @@ public class NewUserRegister
     public NewUserRegister()
     {
         JFrame f =new JFrame("Registration FORM");
+        f.getContentPane().setBackground(new Color(255,128,102));
         JLabel title = new JLabel("New User Register",JLabel.CENTER);
         title.setBounds(500,10,400,110);
         title.setFont(new Font("Comic Sans MS", Font.BOLD, 30));

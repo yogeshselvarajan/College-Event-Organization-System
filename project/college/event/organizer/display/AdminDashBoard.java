@@ -40,7 +40,7 @@ public class AdminDashBoard
         f.add(manage_events);
 
         JButton Exit = new JButton("Exit Application");
-        Exit.setBounds(400,620,500,60);
+        Exit.setBounds(400,320,500,60);
         Exit.addActionListener( e ->
         {
             System.exit(0);

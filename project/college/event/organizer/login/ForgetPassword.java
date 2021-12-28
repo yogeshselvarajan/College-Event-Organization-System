@@ -65,8 +65,8 @@ public class ForgetPassword extends JFrame {
                      pst.executeUpdate();
                      JOptionPane.showMessageDialog(null,"Password Reset Successfully !!");
                      dispose();
-                        MainLoginPage ob = new MainLoginPage();
-                        ob.main(null);
+                     MainLoginPage ob = new MainLoginPage();
+                     ob.main(null);
                  } catch(SQLException throwables)
                  {
                      throwables.printStackTrace();

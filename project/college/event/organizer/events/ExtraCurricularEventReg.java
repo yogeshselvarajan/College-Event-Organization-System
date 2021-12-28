@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 
 public class ExtraCurricularEventReg
@@ -140,19 +141,14 @@ public class ExtraCurricularEventReg
         f.add(event_options);
 
         /** Radio Button Declarations for Meeting Options */
-        JRadioButton single,weekly,month;
-        single = new JRadioButton("Single");
-        single.setBounds(600,345,100,25);
-
-        weekly = new JRadioButton("Weekly");
-        weekly.setBounds(700,345,100,25);
-
-        month = new JRadioButton("Monthly");
-        month.setBounds(800,345,100,25);
-
-        ButtonGroup bg=new ButtonGroup();
-        bg.add(single);bg.add(weekly);bg.add(month);
-        f.add(single);f.add(weekly);f.add(month);
+        CheckboxGroup cbg=new CheckboxGroup();
+        Checkbox ck1=new Checkbox("Single",false,cbg);
+        Checkbox ck2=new Checkbox("Weekly",false,cbg);
+        Checkbox ck3=new Checkbox("Monthly",false,cbg);
+        ck1.setBounds(600,345,100,25);
+        ck2.setBounds(700,345,100,25);
+        ck3.setBounds(800,345,100,25);
+        f.add(ck1);f.add(ck2);f.add(ck3);
 
         /** "Number of Participants" Label and TextField Declaration */
         num_of_participants=new JLabel("Number of Participants");
@@ -221,7 +217,7 @@ public class ExtraCurricularEventReg
             String e_start_date = start_Date.getSelectedItem().toString()+
                     start_Month.getSelectedItem().toString() +
                     start_Year.getSelectedItem().toString();
-            String e_options = bg.getSelection().getActionCommand();
+            String e_options = cbg.getSelectedCheckbox().getLabel();;
             String p_field = participants_field.getText();
             String event_id = meeting_id_field.getText();
             String c_id = id.getText();
@@ -229,18 +225,22 @@ public class ExtraCurricularEventReg
 
             try
             {
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_db", "root", "root");
-
-                String query = "INSERT INTO workshop values('" + event_title + "','" + description + "','" + e_start_time + "','" +
-                          e_duration + "','" + e_start_date + "','" + e_options + "','" + p_field + "','" + event_id + "','"  + c_id + "','" + e_id + "')";
-                Statement sta = connection.createStatement();
-                int x = sta.executeUpdate(query);
-                if (x == 0) {
-                    JOptionPane.showMessageDialog(submit, "An account with this details already exists !" +
-                            "Sign in instead ! You will be  now redirected to Login Page ...");
-                } else {
-                    JOptionPane.showMessageDialog(submit, "The workshop has been successfully scheduled !");
-                }
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdb", "root", "root");
+                PreparedStatement pst;
+                pst = connection.prepareStatement("insert into extracurricular(event_name,description,start_time,duration,start_date,event_options,number_of_participants,event_id,college_id,email_id)values(?,?,?,?,?,?,?,?,?,?)");
+                pst.setString(1,event_title);
+                pst.setString(2,description);
+                pst.setString(3,e_duration);
+                pst.setString(4,e_start_time);
+                pst.setString(5,e_start_date);
+                pst.setString(6,e_options);
+                pst.setString(7,p_field);
+                pst.setString(8,event_id);
+                pst.setString(9,c_id);
+                pst.setString(10,e_id);
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(submit,
+                        "You have been successfully registered for the extra curricular event !");
                 connection.close();
             } catch (Exception exception) {
                 exception.printStackTrace();

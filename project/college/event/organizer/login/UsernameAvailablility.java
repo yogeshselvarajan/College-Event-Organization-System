@@ -9,6 +9,7 @@ public class UsernameAvailablility
     public UsernameAvailablility()
     {
         JFrame f = new JFrame("Check Username Availability");
+        f.getContentPane().setBackground(new Color(230,230,0));
         JLabel title = new JLabel("Username Availability", JLabel.CENTER);
         title.setBounds(500, 10, 400, 110);
         title.setFont(new Font("Comic Sans MS", Font.BOLD, 30));

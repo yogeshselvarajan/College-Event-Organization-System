@@ -3,8 +3,9 @@ package project.college.event.organizer.display.eventmanage;
 import project.college.event.organizer.display.eventmanage.culturals.Manage_Culturals;
 import project.college.event.organizer.display.eventmanage.finearts.Manage_FineArts;
 import project.college.event.organizer.display.eventmanage.workshop.Manage_Workshop;
-import project.college.event.organizer.events.*;
-import project.college.event.organizer.login.EventsRegister;
+import project.college.event.organizer.events.ExtraCurricularEventReg;
+import project.college.event.organizer.events.MeetingRegistration;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,6 +15,7 @@ public class EventsDashBoard
     public EventsDashBoard()
     {
         JFrame f = new JFrame("Manage Events");
+        f.getContentPane().setBackground(new Color(255,238,153));
         JLabel title = new JLabel("Welcome to the Management Page", JLabel.CENTER);
         title.setBounds(350, 10, 600, 110);
         title.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
@@ -31,7 +33,7 @@ public class EventsDashBoard
         });
         f.add(culturals);
 
-       /** JButton extracurricular = new JButton("Register for Extra Curricular Event");
+        JButton extracurricular = new JButton("Register for Extra Curricular Event");
         extracurricular.setBounds(400,220,500,60);
         extracurricular.addActionListener(e ->
         {
@@ -39,7 +41,8 @@ public class EventsDashBoard
             ExtraCurricularEventReg ob = new ExtraCurricularEventReg();
             ob.main(null);
         });
-        f.add(extracurricular); */
+
+        f.add(extracurricular);
 
         JButton finearts = new JButton("Register for FineArts Event");
         finearts.setBounds(400,320,500,60);
@@ -51,7 +54,7 @@ public class EventsDashBoard
         });
         f.add(finearts);
 
-        /**JButton meeting = new JButton("Register for Meeting Event");
+        JButton meeting = new JButton("Register for Meeting Event");
         meeting.setBounds(400,420,500,60);
         meeting.addActionListener( e ->
         {
@@ -59,7 +62,7 @@ public class EventsDashBoard
             MeetingRegistration ob = new MeetingRegistration();
             ob.main(null);
         });
-        f.add(meeting);*/
+        f.add(meeting);
 
         JButton workshop = new JButton("Register for Workshop Event");
         workshop.setBounds(400,520,500,60);

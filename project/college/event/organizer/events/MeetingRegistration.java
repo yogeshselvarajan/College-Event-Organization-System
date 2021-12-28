@@ -4,6 +4,7 @@ package project.college.event.organizer.events;
 import java.awt.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 import javax.swing.*;
 
@@ -250,18 +251,23 @@ public class MeetingRegistration
 
             try
             {
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_db", "root", "root");
-
-                String query = "INSERT INTO workshop values('" + meeting_title + "','" + description + "','" + m_start_time + "','" +
-                        m_type + "','" + m_duration + "','" + m_start_date + "','" + m_options + "','" + p_field + "','" + m_id + "','" + pass_field + "','" + c_id + "','" + e_id + "')";
-                Statement sta = connection.createStatement();
-                int x = sta.executeUpdate(query);
-                if (x == 0) {
-                    JOptionPane.showMessageDialog(submit, "An account with this details already exists !" +
-                            "Sign in instead ! You will be  now redirected to Login Page ...");
-                } else {
-                    JOptionPane.showMessageDialog(submit, "The workshop has been successfully scheduled !");
-                }
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdb", "root", "root");
+                PreparedStatement pst;
+                pst = connection.prepareStatement("insert into meetingdb(MeetingName,MeetingDescription,StartTime,MeetingType,Duration,MeetingOptions,NumofParticipants,MeetingID,MeetingPassword,CollegeID,EmailID)values(?,?,?,?,?,?,?,?,?,?,?)");
+                pst.setString(1,meeting_title);
+                pst.setString(2,description);
+                pst.setString(3,m_start_time);
+                pst.setString(4,m_type);
+                pst.setString(5,m_duration);
+                pst.setString(6,m_options);
+                pst.setString(7,p_field);
+                pst.setString(8,m_id);
+                pst.setString(9,pass_field);
+                pst.setString(10,c_id);
+                pst.setString(11,c_id);
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(submit,
+                        "You have been successfully registered for the meeting !");
                 connection.close();
             } catch (Exception exception) {
                 exception.printStackTrace();
